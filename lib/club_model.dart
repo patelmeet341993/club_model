@@ -1,24 +1,22 @@
 library hms_models;
 
-//endregion
+//region Dependencies
 
-  //region UI
-  export 'package:cached_network_image/cached_network_image.dart';
+//region UI
+export 'package:cached_network_image/cached_network_image.dart';
 export 'package:cloud_firestore/cloud_firestore.dart';
 //endregion
 
-//region Dependencies
-
-  //region Utils
-  export 'package:connectivity_plus/connectivity_plus.dart';
+//region Utils
+export 'package:connectivity_plus/connectivity_plus.dart';
 export 'package:cupertino_icons/cupertino_icons.dart';
 export 'package:equatable/equatable.dart';
 export 'package:firebase_analytics/firebase_analytics.dart';
 export 'package:firebase_auth/firebase_auth.dart';
 //endregion
 
-  //region Firebase
-  export 'package:firebase_core/firebase_core.dart';
+//region Firebase
+export 'package:firebase_core/firebase_core.dart';
 export 'package:firebase_crashlytics/firebase_crashlytics.dart';
 export 'package:firebase_dynamic_links/firebase_dynamic_links.dart';
 export 'package:firebase_messaging/firebase_messaging.dart';
@@ -29,52 +27,57 @@ export 'package:font_awesome_flutter/font_awesome_flutter.dart';
 export 'package:google_fonts/google_fonts.dart';
 //endregion
 
-  // region Offline Database
-  export 'package:hive/hive.dart';
+// region Offline Database
+export 'package:hive/hive.dart';
 //endregion
 
-  // region Api Operations
-  export 'package:http/http.dart';
+// region Api Operations
+export 'package:http/http.dart';
 export 'package:intl/intl.dart';
 export 'package:loading_animation_widget/loading_animation_widget.dart';
 export 'package:material_design_icons_flutter/material_design_icons_flutter.dart';
 //endregion
 
-  // region State Management
-  export 'package:provider/provider.dart';
+// region State Management
+export 'package:provider/provider.dart';
 export 'package:shared_preferences/shared_preferences.dart';
 export 'package:shimmer/shimmer.dart';
 export 'package:top_snackbar_flutter/top_snack_bar.dart';
 export 'package:url_launcher/url_launcher.dart';
 export 'package:uuid/uuid.dart';
 
+//endregion
+
+//endregion
+
 //region Backend
-  //region Analytics
-  export 'backend/analytics/analytics_controller.dart';
+//region Analytics
+export 'backend/analytics/analytics_controller.dart';
 //endregion
 
-  //region App Theme
-  export 'backend/app_theme/app_theme_provider.dart';
+//region App Theme
+export 'backend/app_theme/app_theme_provider.dart';
 //endregion
 
-  //region Common
-  export 'backend/common/app_controller.dart';
+//region Common
+export 'backend/common/app_controller.dart';
 export 'backend/common/common_provider.dart';
 export 'backend/common/data_controller.dart';
 export 'backend/common/firestore_controller.dart';
 //endregion
 
-  //region Connection
-  export 'backend/connection/connection_controller.dart';
+//region Connection
+export 'backend/connection/connection_controller.dart';
 export 'backend/connection/connection_provider.dart';
 //endregion
 
-  //region Navigation
-  export 'backend/navigation/navigation_arguments.dart';
+//region Navigation
+export 'backend/navigation/navigation_arguments.dart';
 export 'backend/navigation/navigation_operation.dart';
 export 'backend/navigation/navigation_operation_parameters.dart';
 export 'backend/navigation/navigation_type.dart';
 //endregion
+
 //endregion
 
 //region Configs
@@ -96,7 +99,13 @@ export 'utils/my_toast.dart';
 export 'utils/my_utils.dart';
 export 'utils/parsing_helper.dart';
 export 'utils/shared_pref_manager.dart';
-  //endregion
+//endregion
 
-
+//region View
+//region Common
+//region Components
+export 'view/common/components/loading_widget.dart';
+export 'view/common/components/modal_progress_hud.dart';
+//endregion
+//endregion
 //endregion

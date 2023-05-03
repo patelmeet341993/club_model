@@ -1,6 +1,10 @@
 import 'package:flutter/material.dart';
 
 class Styles {
+  static final Styles _instance = Styles._();
+  Styles._();
+  factory Styles() => _instance;
+
   Color lightPrimaryColor = const Color(0xff6d65df);
   Color darkPrimaryColor = const Color(0xff6d65df);
 
@@ -24,6 +28,15 @@ class Styles {
 
   Color lightAppBarColor = const Color(0xffffffff);
   Color darkAppBarColor = const Color(0xff2e343b);
+
+  Color lightTextFiledFillColor = Colors.white;
+  Color darkTextFiledFillColor = Colors.black;
+
+  Color lightHoverColor = Colors.grey.withOpacity(0.05);
+  Color darkHoverColor = Colors.grey.withOpacity(0.5);
+
+  Color lightFocusedTextFormFieldColor = const Color(0xff6d65df).withOpacity(0.05);
+  Color darkFocusedTextFormFieldColor = const Color(0xff6d65df).withOpacity(0.5);
 
   double buttonBorderRadius = 5;
 
