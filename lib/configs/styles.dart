@@ -1,40 +1,40 @@
 import 'package:flutter/material.dart';
 
 class Styles {
-  static const Color lightPrimaryColor = Color(0xff6d65df);
-  static const Color darkPrimaryColor = Color(0xff6d65df);
+  Color lightPrimaryColor = const Color(0xff6d65df);
+  Color darkPrimaryColor = const Color(0xff6d65df);
 
-  static Color lightPrimaryVariant = const Color(0xff6d65df).withOpacity(0.6);
-  static Color darkPrimaryVariant = const Color(0xff6d65df).withOpacity(0.6);
+  Color lightPrimaryVariant = const Color(0xff6d65df).withOpacity(0.6);
+  Color darkPrimaryVariant = const Color(0xff6d65df).withOpacity(0.6);
 
-  static const Color lightSecondaryColor = Colors.blueAccent;
-  static const Color darkSecondaryColor = Colors.blueAccent;
+  Color lightSecondaryColor = Colors.blueAccent;
+  Color darkSecondaryColor = Colors.blueAccent;
 
-  static Color lightSecondaryVariant = Colors.blueAccent.shade400;
-  static Color darkSecondaryVariant = Colors.blueAccent.shade400;
+  Color lightSecondaryVariant = Colors.blueAccent.shade400;
+  Color darkSecondaryVariant = Colors.blueAccent.shade400;
 
   Color lightAppBarTextColor = const Color(0xff495057);
   Color darkAppBarTextColor = const Color(0xffffffff);
 
-  static const Color lightTextColor = Color(0xff495057);
-  static const Color darkTextColor = Color(0xffffffff);
+  Color lightTextColor = const Color(0xff495057);
+  Color darkTextColor = const Color(0xffffffff);
 
-  static Color lightBackgroundColor = Colors.grey.shade100;
-  static const Color darkBackgroundColor = Color(0xffffffff);
+  Color lightBackgroundColor = Colors.grey.shade100;
+  Color darkBackgroundColor = const Color(0xffffffff);
 
-  static const Color lightAppBarColor = Color(0xffffffff);
-  static const Color darkAppBarColor = Color(0xff2e343b);
+  Color lightAppBarColor = const Color(0xffffffff);
+  Color darkAppBarColor = const Color(0xff2e343b);
 
   //region CustomColors
-  static const Color cardColor = Color(0xfff0f0f0);
-  static const Color secondaryColor = Color(0xff084EAD);
-  static const Color myPrimaryColor = Color(0xff4C508F);
-  static const Color textGrey = Color(0xff676767);
+  Color cardColor = const Color(0xfff0f0f0);
+  Color secondaryColor = const Color(0xff084EAD);
+  Color myPrimaryColor = const Color(0xff4C508F);
+  Color textGrey = const Color(0xff676767);
   //endregion//
 
   //region ShimmerColors
-  static Color shimmerHighlightColor = const Color(0xfff2f2f2);
-  static Color shimmerBaseColor = const Color(0xffb6b6b6);
-  static Color shimmerContainerColor = const Color(0xffc2c2c2);
+  Color shimmerHighlightColor = const Color(0xfff2f2f2);
+  Color shimmerBaseColor = const Color(0xffb6b6b6);
+  Color shimmerContainerColor = const Color(0xffc2c2c2);
   //endregion
 }
