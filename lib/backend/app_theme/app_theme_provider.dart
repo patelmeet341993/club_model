@@ -15,22 +15,12 @@ class AppThemeProvider extends ChangeNotifier {
 
   static bool kIsFullScreen = kIsLinux || kIsWeb || kIsWindow || kIsMac;
 
-  AppThemeProvider() {
-    init();
-  }
-
   bool _darkThemeMode = false;
 
-  bool get darkThemeMode => _darkThemeMode;
+  ThemeData? _lightTheme, _darkTheme;
 
-  void setDarkThemeMode({bool isDarkThemeEnabled = false, bool isNotify = true}) {
-    _darkThemeMode = isDarkThemeEnabled;
-    if(isNotify) notifyListeners();
-  }
-
-  void resetThemeMode({bool isNotify = true}) {
-    _darkThemeMode = false;
-    if(isNotify) notifyListeners();
+  AppThemeProvider() {
+    init();
   }
 
   init() async {
@@ -44,14 +34,17 @@ class AppThemeProvider extends ChangeNotifier {
     notifyListeners();
   }
 
-  Future<void> updateTheme(bool darkThemeMode) async {
-    _darkThemeMode = darkThemeMode;
-    notifyListeners();
+  bool get darkThemeMode => _darkThemeMode;
 
-    SharedPrefManager().setBool(SharePreferenceKeys.appThemeMode, darkThemeMode);
+  void setDarkThemeMode({bool isDarkThemeEnabled = false, bool isNotify = true}) {
+    _darkThemeMode = isDarkThemeEnabled;
+    SharedPrefManager().setBool(SharePreferenceKeys.appThemeMode, isDarkThemeEnabled);
+    if(isNotify) notifyListeners();
   }
 
-  ThemeData? _lightTheme, _darkTheme;
+  void resetThemeMode({bool isNotify = true}) {
+    setDarkThemeMode(isDarkThemeEnabled: false, isNotify: isNotify);
+  }
 
   ThemeData getLightThemeData() {
     if(_lightTheme == null) {
