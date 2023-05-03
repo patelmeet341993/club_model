@@ -25,6 +25,8 @@ class Styles {
   Color lightAppBarColor = const Color(0xffffffff);
   Color darkAppBarColor = const Color(0xff2e343b);
 
+  double buttonBorderRadius = 5;
+
   //region CustomColors
   Color cardColor = const Color(0xfff0f0f0);
   Color secondaryColor = const Color(0xff084EAD);
