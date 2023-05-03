@@ -13,6 +13,9 @@ class Styles {
   static Color lightSecondaryVariant = Colors.blueAccent.shade400;
   static Color darkSecondaryVariant = Colors.blueAccent.shade400;
 
+  Color lightAppBarTextColor = const Color(0xff495057);
+  Color darkAppBarTextColor = const Color(0xffffffff);
+
   static const Color lightTextColor = Color(0xff495057);
   static const Color darkTextColor = Color(0xffffffff);
 
@@ -21,15 +24,6 @@ class Styles {
 
   static const Color lightAppBarColor = Color(0xffffffff);
   static const Color darkAppBarColor = Color(0xff2e343b);
-
-  static const Color lightTextFiledFillColor = Colors.white;
-  static const Color darkTextFiledFillColor = Colors.black;
-
-  static Color lightHoverColor = Colors.grey.withOpacity(0.05);
-  static Color darkHoverColor = Colors.grey.withOpacity(0.5);
-
-  static Color lightFocusedTextFormFieldColor = const Color(0xff6d65df).withOpacity(0.05);
-  static Color darkFocusedTextFormFieldColor = const Color(0xff6d65df).withOpacity(0.5);
 
   //region CustomColors
   static const Color cardColor = Color(0xfff0f0f0);
