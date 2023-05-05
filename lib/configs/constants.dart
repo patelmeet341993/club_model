@@ -31,42 +31,16 @@ class FirebaseNodes {
   //endregion
   //endregion
 
-  //region Admin Users
-  static const String adminUsersCollection = "admin_users";
+  //region User
+  static const String usersCollection = "users";
 
-  static MyFirestoreCollectionReference get adminUsersCollectionReference => FirestoreController.collectionReference(
-    collectionName: adminUsersCollection,
+  static MyFirestoreCollectionReference get usersCollectionReference => FirestoreController.collectionReference(
+    collectionName: usersCollection,
   );
 
-  static MyFirestoreDocumentReference adminUserDocumentReference({String? userId}) => FirestoreController.documentReference(
-    collectionName: adminUsersCollection,
+  static MyFirestoreDocumentReference userDocumentReference({String? userId}) => FirestoreController.documentReference(
+    collectionName: usersCollection,
     documentId: userId,
-  );
-  //endregion
-
-  //region Patient
-  static const String patientCollection = "patient";
-
-  static MyFirestoreCollectionReference get patientCollectionReference => FirestoreController.collectionReference(
-    collectionName: patientCollection,
-  );
-
-  static MyFirestoreDocumentReference patientDocumentReference({String? patientId}) => FirestoreController.documentReference(
-    collectionName: patientCollection,
-    documentId: patientId,
-  );
-  //endregion
-
-  //region Visits
-  static const String visitsCollection = "visits";
-
-  static MyFirestoreCollectionReference get visitsCollectionReference => FirestoreController.collectionReference(
-    collectionName: visitsCollection,
-  );
-
-  static MyFirestoreDocumentReference visitDocumentReference({String? visitId}) => FirestoreController.documentReference(
-    collectionName: visitsCollection,
-    documentId: visitId,
   );
   //endregion
 
