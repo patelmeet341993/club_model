@@ -82,3 +82,16 @@ extension TryParseDateTime on DateFormat {
     return dateTime;
   }
 }
+
+extension ContextExtension on BuildContext {
+  bool checkMounted() {
+    try {
+      return mounted;
+    }
+    catch(e, s) {
+      MyPrint.printOnConsole("Error in ContextExtension.checkMounted():$e");
+      MyPrint.printOnConsole(s);
+      return false;
+    }
+  }
+}
