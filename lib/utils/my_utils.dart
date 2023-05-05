@@ -2,31 +2,33 @@ import 'dart:convert';
 import 'dart:io';
 
 import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:club_model/configs/constants.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:url_launcher/url_launcher_string.dart';
 import 'package:uuid/uuid.dart';
 
+import '../backend/common/firestore_controller.dart';
+import '../models/common/data_model/new_document_data_model.dart';
 import 'my_http_overrides.dart';
 import 'my_print.dart';
 import 'my_toast.dart';
 
 class MyUtils {
   static Future<void> copyToClipboard(BuildContext? context, String string) async {
-    if(string.isNotEmpty) {
+    if (string.isNotEmpty) {
       await Clipboard.setData(ClipboardData(text: string));
-      if(context != null) {
+      if (context != null) {
         MyToast.showSuccess(context: context, msg: "Copied");
       }
     }
   }
 
   static String getNewId({bool isFromUUuid = true}) {
-    if(isFromUUuid) {
+    if (isFromUUuid) {
       return const Uuid().v1().replaceAll("-", "");
-    }
-    else {
+    } else {
       return FirebaseFirestore.instance.collection("sdf").doc().id;
     }
   }
@@ -34,8 +36,7 @@ class MyUtils {
   static String encodeJson(Object? object) {
     try {
       return jsonEncode(object);
-    }
-    catch(e, s) {
+    } catch (e, s) {
       MyPrint.printOnConsole("Error in MyUtils.encodeJson():$e");
       MyPrint.printOnConsole(s);
       return "";
@@ -45,12 +46,41 @@ class MyUtils {
   static dynamic decodeJson(String body) {
     try {
       return jsonDecode(body);
-    }
-    catch(e, s) {
+    } catch (e, s) {
       MyPrint.printOnConsole("Error in MyUtils.decodeJson():$e");
       MyPrint.printOnConsole(s);
       return null;
     }
+  }
+
+  static Future<NewDocumentDataModel> getNewDocIdAndTimeStamp({bool isGetTimeStamp = true}) async {
+    String docId = FirestoreController.documentReference(
+      collectionName: "collectionName",
+    ).id;
+    Timestamp timestamp = Timestamp.now();
+
+    if (isGetTimeStamp) {
+      await FirebaseNodes.timestampCollectionReference.add({"temp_timestamp": FieldValue.serverTimestamp()}).then((DocumentReference<Map<String, dynamic>> reference) async {
+        docId = reference.id;
+
+        if (isGetTimeStamp) {
+          DocumentSnapshot<Map<String, dynamic>> documentSnapshot = await reference.get();
+          timestamp = documentSnapshot.data()?['temp_timestamp'];
+        }
+
+        reference.delete();
+      }).catchError((e, s) {
+        // reportErrorToCrashlytics(e, s, reason: "Error in DataController.getNewDocId()");
+      });
+
+      if (docId.isEmpty) {
+        docId = FirestoreController.documentReference(
+          collectionName: "collectionName",
+        ).id;
+      }
+    }
+
+    return NewDocumentDataModel(docId: docId, timestamp: timestamp);
   }
 
   static void hideShowKeyboard({bool isHide = true}) {
@@ -58,7 +88,7 @@ class MyUtils {
   }
 
   static void initializeHttpOverrides() {
-    if(!kIsWeb) {
+    if (!kIsWeb) {
       HttpOverrides.global = MyHttpOverrides();
       HttpClient httpClient = HttpClient();
       httpClient.badCertificateCallback = ((X509Certificate cert, String host, int port) => true);
@@ -69,22 +99,21 @@ class MyUtils {
     String scheme = Uri.base.scheme;
 
     String current = "", target = "";
-    if(scheme == "http") {
+    if (scheme == "http") {
       current = "https:";
       target = "http:";
-    }
-    else {
+    } else {
       current = "http:";
       target = "https:";
     }
-    if(url.startsWith(current)) {
+    if (url.startsWith(current)) {
       url = url.replaceFirst(current, target);
     }
     return url;
   }
 
   static String getHostNameFromSiteUrl(String url) {
-    if(url.startsWith("http://") || url.startsWith("https://")) {
+    if (url.startsWith("http://") || url.startsWith("https://")) {
       Uri uri = Uri.parse(url);
       return uri.host;
     }
@@ -99,21 +128,18 @@ class MyUtils {
 
     try {
       isCanLaunch = await canLaunchUrlString(url);
-    }
-    catch(e, s) {
+    } catch (e, s) {
       MyPrint.printOnConsole("Error in Checking canLaunchUrlString in MyUtils.launchUrl():$e", tag: tag);
       MyPrint.printOnConsole(s, tag: tag);
     }
 
-
-    if(isCanLaunch) {
+    if (isCanLaunch) {
       try {
         isLaunched = await launchUrlString(
           url,
           mode: launchMode,
         );
-      }
-      catch(e, s) {
+      } catch (e, s) {
         MyPrint.printOnConsole("Error in Checking canLaunchUrlString in MyUtils.launchUrl():$e", tag: tag);
         MyPrint.printOnConsole(s, tag: tag);
       }
