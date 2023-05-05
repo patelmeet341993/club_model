@@ -231,6 +231,17 @@ class ParsingHelper {
     }
   }
 
+  static Timestamp? parseTimestampMethod(dynamic value, {DateTime? defaultValue, String dateFormat = ""}) {
+    DateTime? dateTime = parseDateTimeMethod(value, defaultValue: defaultValue, dateFormat: dateFormat);
+
+    if(dateTime != null) {
+      return Timestamp.fromDate(dateTime);
+    }
+    else {
+      return null;
+    }
+  }
+
   static bool? parseBoolNullableMethod(dynamic value, {bool? defaultValue}) {
     if(value == null) {
       return defaultValue;
