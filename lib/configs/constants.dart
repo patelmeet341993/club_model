@@ -31,6 +31,32 @@ class FirebaseNodes {
   //endregion
   //endregion
 
+  //region Club
+  static const String clubsCollection = "clubs";
+
+  static MyFirestoreCollectionReference get clubsCollectionReference => FirestoreController.collectionReference(
+    collectionName: clubsCollection,
+  );
+
+  static MyFirestoreDocumentReference clubDocumentReference({String? clubId}) => FirestoreController.documentReference(
+    collectionName: clubsCollection,
+    documentId: clubId,
+  );
+  //endregion
+
+  //region Product
+  static const String productsCollection = "products";
+
+  static MyFirestoreCollectionReference get productsCollectionReference => FirestoreController.collectionReference(
+    collectionName: productsCollection,
+  );
+
+  static MyFirestoreDocumentReference productDocumentReference({String? productId}) => FirestoreController.documentReference(
+    collectionName: productsCollection,
+    documentId: productId,
+  );
+  //endregion
+
   //region User
   static const String usersCollection = "users";
 
