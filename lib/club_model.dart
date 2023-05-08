@@ -89,12 +89,12 @@ export 'configs/typedefs.dart';
 //endregion
 
 //region Models
-//region Club
-export 'models/club/data_model/club_model.dart';
-//endregion
-
 // region AdminUser
 export 'models/admin_user/data_model/admin_user_model.dart';
+//endregion
+
+//region Club
+export 'models/club/data_model/club_model.dart';
 //endregion
 
 //region Common
