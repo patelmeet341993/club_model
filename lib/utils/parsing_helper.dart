@@ -264,4 +264,27 @@ class ParsingHelper {
       return defaultValue;
     }
   }
+
+  static GeoPoint? parseGeoPointMethod(dynamic value, {GeoPoint? defaultValue}) {
+    if(value == null) {
+      return defaultValue;
+    }
+    else if(value is GeoPoint) {
+      return value;
+    }
+    else if(value is Map) {
+      Map<String, dynamic> map = parseMapMethod<dynamic, dynamic, String, dynamic>(value);
+      double? lat = parseDoubleNullableMethod(map['lat']);
+      double? lon = parseDoubleNullableMethod(map['lon']);
+
+      if(lat == null || lon == null) {
+        return defaultValue;
+      }
+
+      return GeoPoint(lat, lon);
+    }
+    else {
+      return defaultValue;
+    }
+  }
 }
