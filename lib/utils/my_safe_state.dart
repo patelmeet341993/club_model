@@ -44,7 +44,9 @@ mixin MySafeState<T extends StatefulWidget> on State<T> {
     }
     else {
       WidgetsBinding.instance.addPostFrameCallback((timeStamp) {
-        setState(() {});
+        if(_pageMounted) {
+          setState(() {});
+        }
       });
     }
   }
