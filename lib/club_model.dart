@@ -93,8 +93,13 @@ export 'configs/typedefs.dart';
 export 'models/club/data_model/club_model.dart';
 //endregion
 
+// region AdminUser
+export 'models/admin_user/data_model/admin_user_model.dart';
+//endregion
+
 //region Common
 export 'models/common/data_model/new_document_data_model.dart';
+export 'models/common/data_model/property_model.dart';
 //endregion
 
 //region Location
