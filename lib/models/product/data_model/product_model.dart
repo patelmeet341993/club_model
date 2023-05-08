@@ -3,7 +3,7 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 import '../../../utils/my_utils.dart';
 import '../../../utils/parsing_helper.dart';
 
-class BottleModel {
+class ProductModel {
   String id = "";
   String name = "";
   String brandName = "";
@@ -14,7 +14,7 @@ class BottleModel {
   Timestamp? createdTime;
   Timestamp? updatedTime;
 
-  BottleModel({
+  ProductModel({
     this.id = "",
     this.name = "",
     this.brandName = "",
@@ -26,7 +26,7 @@ class BottleModel {
     this.updatedTime,
   });
 
-  BottleModel.fromMap(Map<String, dynamic> map) {
+  ProductModel.fromMap(Map<String, dynamic> map) {
     initializeFromMap(map);
   }
 
