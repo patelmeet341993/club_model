@@ -88,6 +88,28 @@ export 'configs/styles.dart';
 export 'configs/typedefs.dart';
 //endregion
 
+//region Models
+//region Club
+export 'models/club/data_model/club_model.dart';
+//endregion
+
+//region Common
+export 'models/common/data_model/new_document_data_model.dart';
+//endregion
+
+//region Location
+export 'models/location/data_model/location_model.dart';
+//endregion
+
+//region Product
+export 'models/product/data_model/product_model.dart';
+//endregion
+
+//region User
+export 'models/user/data_model/user_model.dart';
+//endregion
+//endregion
+
 //region Utils
 export 'utils/date_representation.dart';
 export 'utils/extensions.dart';
