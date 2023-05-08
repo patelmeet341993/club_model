@@ -31,6 +31,19 @@ class FirebaseNodes {
   //endregion
   //endregion
 
+  //region Admin Users
+  static const String adminUsersCollection = "admin_users";
+
+  static MyFirestoreCollectionReference get adminUsersCollectionReference => FirestoreController.collectionReference(
+    collectionName: adminUsersCollection,
+  );
+
+  static MyFirestoreDocumentReference adminUserDocumentReference({String? userId}) => FirestoreController.documentReference(
+    collectionName: adminUsersCollection,
+    documentId: userId,
+  );
+  //endregion
+
   //region Club
   static const String clubsCollection = "clubs";
 
