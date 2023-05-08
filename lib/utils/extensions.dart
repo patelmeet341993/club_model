@@ -1,3 +1,4 @@
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
 
@@ -92,6 +93,28 @@ extension ContextExtension on BuildContext {
       MyPrint.printOnConsole("Error in ContextExtension.checkMounted():$e");
       MyPrint.printOnConsole(s);
       return false;
+    }
+  }
+}
+
+extension MyGeoPoint on GeoPoint {
+  Map<String, dynamic> getGeoPointJson() {
+    return {
+      "lat" : latitude,
+      "lon" : longitude,
+    };
+  }
+}
+
+extension MyDateTimeExtension on DateTime {
+  String? getDateString({String? defaultValue}) {
+    try {
+      return DateFormat('yyyy-MM-dd HH:mm:ss').format(this);
+    }
+    catch(e, s) {
+      MyPrint.printOnConsole("Error in Converting DateTime to String in MyDateTimeExtension().getDateString():$e");
+      MyPrint.printOnConsole(s);
+      return defaultValue;
     }
   }
 }
