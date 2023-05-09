@@ -13,6 +13,7 @@ export 'package:cupertino_icons/cupertino_icons.dart';
 export 'package:equatable/equatable.dart';
 export 'package:firebase_analytics/firebase_analytics.dart';
 export 'package:firebase_auth/firebase_auth.dart';
+export 'package:file_picker/file_picker.dart';
 //endregion
 
 //region Firebase
