@@ -5,6 +5,8 @@ class LoadingWidget extends StatelessWidget {
   final double boxSize, loaderSize;
   final Color? backgroundColor, loaderColor;
   final double borderRadius;
+  final bool isCenter;
+
   const LoadingWidget({
     Key? key,
     this.boxSize = 90,
@@ -12,13 +14,14 @@ class LoadingWidget extends StatelessWidget {
     this.backgroundColor,
     this.loaderColor,
     this.borderRadius = 20,
+    this.isCenter = true,
   }) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
     ThemeData themeData = Theme.of(context);
 
-    return Container(
+    Widget widget = Container(
       height: boxSize,
       width: boxSize,
       decoration: BoxDecoration(
@@ -27,5 +30,12 @@ class LoadingWidget extends StatelessWidget {
       ),
       child: Center(child: LoadingAnimationWidget.fourRotatingDots(color: loaderColor ?? themeData.primaryColor, size: loaderSize)),
     );
+
+    if(isCenter) {
+      return Center(child: widget);
+    }
+    else {
+      return widget;
+    }
   }
 }
