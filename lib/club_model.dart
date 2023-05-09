@@ -85,6 +85,7 @@ export 'backend/navigation/navigation_type.dart';
 
 //region Configs
 export 'configs/app_strings.dart';
+export 'configs/app_theme.dart';
 export 'configs/constants.dart';
 export 'configs/error_codes_and_messages.dart';
 export 'configs/styles.dart';
