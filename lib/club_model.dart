@@ -1,16 +1,20 @@
 library hms_models;
 
-//region Dependencies
+//endregion
 
 //region UI
 export 'package:cached_network_image/cached_network_image.dart';
 export 'package:cloud_firestore/cloud_firestore.dart';
-//endregion
+//region Dependencies
 
 //region Utils
 export 'package:connectivity_plus/connectivity_plus.dart';
 export 'package:cupertino_icons/cupertino_icons.dart';
 export 'package:equatable/equatable.dart';
+//endregion
+
+// region File Operations
+export 'package:file_picker/file_picker.dart';
 export 'package:firebase_analytics/firebase_analytics.dart';
 export 'package:firebase_auth/firebase_auth.dart';
 //endregion
