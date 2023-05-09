@@ -21,6 +21,7 @@ dependencies:
   shared_preferences: ^2.1.0
   url_launcher: ^6.1.10
   uuid: ^3.0.7
+  file_picker: ^5.3.0
 
   ####################
   # State management #
