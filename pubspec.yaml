@@ -67,6 +67,7 @@ dependencies:
   # File Operations #
   ###################
   file_picker: ^5.3.0
+  image_cropper: ^3.0.3
 
 dev_dependencies:
   flutter_test:

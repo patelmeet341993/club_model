@@ -37,6 +37,7 @@ export 'package:hive/hive.dart';
 
 // region Api Operations
 export 'package:http/http.dart';
+export 'package:image_cropper/image_cropper.dart';
 export 'package:intl/intl.dart';
 export 'package:loading_animation_widget/loading_animation_widget.dart';
 export 'package:material_design_icons_flutter/material_design_icons_flutter.dart';
