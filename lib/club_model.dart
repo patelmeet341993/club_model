@@ -1,55 +1,57 @@
 library hms_models;
 
+//endregion
+
+//region UI
+export 'package:cached_network_image/cached_network_image.dart';
+export 'package:cloud_firestore/cloud_firestore.dart';
 //region Dependencies
 
 //region Utils
 export 'package:connectivity_plus/connectivity_plus.dart';
+export 'package:cupertino_icons/cupertino_icons.dart';
 export 'package:equatable/equatable.dart';
-export 'package:intl/intl.dart';
-export 'package:shared_preferences/shared_preferences.dart';
-export 'package:url_launcher/url_launcher.dart';
-export 'package:uuid/uuid.dart';
 //endregion
 
-// region State Management
-export 'package:provider/provider.dart';
+// region File Operations
+export 'package:file_picker/file_picker.dart';
+export 'package:firebase_analytics/firebase_analytics.dart';
+export 'package:firebase_auth/firebase_auth.dart';
+//endregion
+
+//region Firebase
+export 'package:firebase_core/firebase_core.dart';
+export 'package:firebase_crashlytics/firebase_crashlytics.dart';
+export 'package:firebase_dynamic_links/firebase_dynamic_links.dart';
+export 'package:firebase_messaging/firebase_messaging.dart';
+export 'package:firebase_storage/firebase_storage.dart';
+export 'package:flutter_spinkit/flutter_spinkit.dart';
+export 'package:flutter_svg/flutter_svg.dart';
+export 'package:fluttertoast/fluttertoast.dart';
+export 'package:font_awesome_flutter/font_awesome_flutter.dart';
+export 'package:google_fonts/google_fonts.dart';
 //endregion
 
 // region Offline Database
 export 'package:hive/hive.dart';
 //endregion
 
-//region UI
-export 'package:cached_network_image/cached_network_image.dart';
-export 'package:cupertino_icons/cupertino_icons.dart';
-export 'package:font_awesome_flutter/font_awesome_flutter.dart';
-export 'package:google_fonts/google_fonts.dart';
-export 'package:flutter_svg/flutter_svg.dart';
-export 'package:material_design_icons_flutter/material_design_icons_flutter.dart';
-export 'package:flutter_spinkit/flutter_spinkit.dart';
-export 'package:loading_animation_widget/loading_animation_widget.dart';
-export 'package:shimmer/shimmer.dart';
-export 'package:fluttertoast/fluttertoast.dart';
-export 'package:top_snackbar_flutter/top_snack_bar.dart';
-//endregion
-
-//region Firebase
-export 'package:firebase_core/firebase_core.dart';
-export 'package:firebase_auth/firebase_auth.dart';
-export 'package:cloud_firestore/cloud_firestore.dart';
-export 'package:firebase_messaging/firebase_messaging.dart';
-export 'package:firebase_analytics/firebase_analytics.dart';
-export 'package:firebase_crashlytics/firebase_crashlytics.dart';
-export 'package:firebase_dynamic_links/firebase_dynamic_links.dart';
-//endregion
-
 // region Api Operations
 export 'package:http/http.dart';
+export 'package:image_cropper/image_cropper.dart';
+export 'package:intl/intl.dart';
+export 'package:loading_animation_widget/loading_animation_widget.dart';
+export 'package:material_design_icons_flutter/material_design_icons_flutter.dart';
 //endregion
 
-// region File Operations
-export 'package:file_picker/file_picker.dart';
-export 'package:image_cropper/image_cropper.dart';
+// region State Management
+export 'package:provider/provider.dart';
+export 'package:shared_preferences/shared_preferences.dart';
+export 'package:shimmer/shimmer.dart';
+export 'package:top_snackbar_flutter/top_snack_bar.dart';
+export 'package:url_launcher/url_launcher.dart';
+export 'package:uuid/uuid.dart';
+
 //endregion
 
 //endregion
