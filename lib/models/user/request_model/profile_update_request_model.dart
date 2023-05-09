@@ -4,20 +4,22 @@ import '../../../utils/my_utils.dart';
 
 class ProfileUpdateRequestModel {
   String id = "";
-  String name = "";
+  String? name;
+  String? imageUrl;
   Timestamp? updatedTime;
 
   ProfileUpdateRequestModel({
-    this.id = "",
+    required this.id,
     this.name = "",
+    this.imageUrl = "",
     this.updatedTime,
   });
 
   Map<String, dynamic> toMap({bool toJson = false}) {
     return <String, dynamic>{
-      "id" : id,
-      "name" : name,
-      "updatedTime" : toJson ? updatedTime?.toDate().millisecondsSinceEpoch : updatedTime,
+      if(name != null) "name" : name,
+      if(imageUrl != null) "imageUrl" : imageUrl,
+      if(updatedTime != null) "updatedTime" : toJson ? updatedTime?.toDate().millisecondsSinceEpoch : updatedTime,
     };
   }
 
