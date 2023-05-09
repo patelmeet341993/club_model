@@ -134,6 +134,7 @@ export 'utils/shared_pref_manager.dart';
 //region Components
 export 'view/common/components/loading_widget.dart';
 export 'view/common/components/modal_progress_hud.dart';
+export 'view/common/components/common_cachednetwork_image.dart';
 //endregion
 //endregion
 //endregion
