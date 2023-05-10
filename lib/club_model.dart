@@ -114,6 +114,11 @@ export 'models/product/data_model/product_model.dart';
 //region User
 export 'models/user/data_model/user_model.dart';
 //endregion
+
+// region Brand
+export 'models/brand/data_model/brand_model.dart';
+//endregion
+
 //endregion
 
 //region Utils
