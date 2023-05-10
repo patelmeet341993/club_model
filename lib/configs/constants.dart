@@ -29,6 +29,18 @@ class FirebaseNodes {
     documentId: propertyDocument,
   );
   //endregion
+
+  // region Brand Document
+  static const String brandDocument = "brand";
+
+  static MyFirestoreDocumentReference get brandDocumentReference => adminDocumentReference(
+    documentId: brandDocument,
+  );
+  //endregion
+
+
+
+
   //endregion
 
   //region Admin Users
