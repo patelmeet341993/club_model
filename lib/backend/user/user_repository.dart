@@ -5,6 +5,7 @@ import 'package:club_model/utils/my_print.dart';
 import 'package:club_model/utils/my_utils.dart';
 
 import '../../configs/typedefs.dart';
+import '../../models/user/request_model/profile_update_request_model.dart';
 
 class UserRepository {
   Future<UserModel?> getUserModelFromId({required String userId}) async {
@@ -65,5 +66,37 @@ class UserRepository {
     MyPrint.printOnConsole("isCreated:'$isCreated'", tag: tag);
 
     return isCreated;
+  }
+
+  Future<bool> updateUserProfileData({required ProfileUpdateRequestModel requestModel}) async {
+    String tag = MyUtils.getNewId();
+    MyPrint.printOnConsole("UserRepository().updateUserProfileData() called with requestModel:'$requestModel'", tag: tag);
+
+    if(requestModel.id.isEmpty) {
+      MyPrint.printOnConsole("Returning from UserRepository().updateUserProfileData() because userId is empty", tag: tag);
+      return false;
+    }
+
+    bool isUpdated = false;
+
+    try {
+      NewDocumentDataModel newDocumentDataModel = await MyUtils.getNewDocIdAndTimeStamp(isGetTimeStamp: true);
+      MyPrint.printOnConsole("newDocumentDataModel:'$newDocumentDataModel'", tag: tag);
+
+      requestModel.updatedTime = newDocumentDataModel.timestamp;
+
+      MyPrint.printOnConsole("Final requestModel:'$requestModel'", tag: tag);
+
+      await FirebaseNodes.userDocumentReference(userId: requestModel.id).update(requestModel.toMap());
+      isUpdated = true;
+    }
+    catch(e, s) {
+      MyPrint.printOnConsole("Error in Creating User Document in Firestore in UserRepository().updateUserProfileData():$e", tag: tag);
+      MyPrint.printOnConsole(s, tag: tag);
+    }
+
+    MyPrint.printOnConsole("isUpdated:'$isUpdated'", tag: tag);
+
+    return isUpdated;
   }
 }

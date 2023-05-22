@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 
 mixin MySafeState<T extends StatefulWidget> on State<T> {
   bool _pageMounted = false, _disposed = false;
+  late ThemeData themeData;
 
   bool get pageMounted => _pageMounted;
 
@@ -9,6 +10,8 @@ mixin MySafeState<T extends StatefulWidget> on State<T> {
   @protected
   void pageBuild() {
     _pageMounted = false;
+    themeData = Theme.of(context);
+
     WidgetsBinding.instance.addPostFrameCallback((timeStamp) {
       _pageMounted = true;
     });

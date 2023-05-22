@@ -95,6 +95,8 @@ extension ContextExtension on BuildContext {
       return false;
     }
   }
+
+  Size get sizeData => MediaQuery.of(this).size;
 }
 
 extension MyGeoPoint on GeoPoint {
