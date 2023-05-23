@@ -4,7 +4,6 @@ library hms_models;
 //region Utils
 export 'package:connectivity_plus/connectivity_plus.dart';
 export 'package:equatable/equatable.dart';
-export 'package:file_picker/file_picker.dart';
 export 'package:intl/intl.dart';
 export 'package:shared_preferences/shared_preferences.dart';
 export 'package:url_launcher/url_launcher.dart';
