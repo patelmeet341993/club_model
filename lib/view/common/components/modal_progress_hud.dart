@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 
+import 'loading_widget.dart';
+
 class ModalProgressHUD extends StatelessWidget {
   final bool inAsyncCall;
   final double opacity;
@@ -14,7 +16,7 @@ class ModalProgressHUD extends StatelessWidget {
     required this.inAsyncCall,
     this.opacity = 0.3,
     this.color = Colors.grey,
-    this.progressIndicator = const CircularProgressIndicator(),
+    this.progressIndicator = const LoadingWidget(),
     this.offset,
     this.dismissible = false,
     required this.child,

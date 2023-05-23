@@ -9,6 +9,7 @@ class UserModel {
   String imageUrl = "";
   String mobileNumber = "";
   int age = 0;
+  Timestamp? dateOfBirth;
   Timestamp? createdTime;
   Timestamp? updatedTime;
 
@@ -18,6 +19,7 @@ class UserModel {
     this.imageUrl = "",
     this.mobileNumber = "",
     this.age = 0,
+    this.dateOfBirth,
     this.createdTime,
     this.updatedTime,
   });
@@ -36,6 +38,7 @@ class UserModel {
     imageUrl = ParsingHelper.parseStringMethod(map['imageUrl']);
     mobileNumber = ParsingHelper.parseStringMethod(map['mobileNumber']);
     age = ParsingHelper.parseIntMethod(map['age']);
+    dateOfBirth = ParsingHelper.parseTimestampMethod(map['dateOfBirth']);
     createdTime = ParsingHelper.parseTimestampMethod(map['createdTime']);
     updatedTime = ParsingHelper.parseTimestampMethod(map['updatedTime']);
   }
@@ -47,6 +50,7 @@ class UserModel {
       "imageUrl" : imageUrl,
       "mobileNumber" : mobileNumber,
       "age" : age,
+      "dateOfBirth" : toJson ? dateOfBirth?.toDate().millisecondsSinceEpoch : dateOfBirth,
       "createdTime" : toJson ? createdTime?.toDate().millisecondsSinceEpoch : createdTime,
       "updatedTime" : toJson ? updatedTime?.toDate().millisecondsSinceEpoch : updatedTime,
     };
