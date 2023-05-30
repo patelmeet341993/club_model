@@ -30,14 +30,6 @@ class FirebaseNodes {
   );
   //endregion
 
-  // region Brand Document
-  static const String brandDocument = "brand";
-
-  static MyFirestoreDocumentReference get brandDocumentReference => adminDocumentReference(
-    documentId: brandDocument,
-  );
-  //endregion
-
 
 
 
@@ -53,6 +45,19 @@ class FirebaseNodes {
   static MyFirestoreDocumentReference adminUserDocumentReference({String? userId}) => FirestoreController.documentReference(
     collectionName: adminUsersCollection,
     documentId: userId,
+  );
+  //endregion
+
+  // region Brand
+  static const String brandCollection = "brand";
+
+  static MyFirestoreCollectionReference get brandCollectionReference => FirestoreController.collectionReference(
+    collectionName: brandCollection,
+  );
+
+  static MyFirestoreDocumentReference brandDocumentReference({String? brandId}) => FirestoreController.documentReference(
+    collectionName: brandCollection,
+    documentId: brandId,
   );
   //endregion
 
