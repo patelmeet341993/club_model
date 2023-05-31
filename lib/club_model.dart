@@ -8,6 +8,7 @@ export 'package:intl/intl.dart';
 export 'package:shared_preferences/shared_preferences.dart';
 export 'package:url_launcher/url_launcher.dart';
 export 'package:uuid/uuid.dart';
+export 'package:mime/mime.dart';
 //endregion
 
 // region State Management
@@ -67,6 +68,7 @@ export 'backend/common/app_controller.dart';
 export 'backend/common/common_provider.dart';
 export 'backend/common/data_controller.dart';
 export 'backend/common/firestore_controller.dart';
+export 'backend/common/firebase_storage_controller.dart';
 //endregion
 
 //region Connection

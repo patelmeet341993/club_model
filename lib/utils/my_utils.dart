@@ -147,4 +147,13 @@ class MyUtils {
 
     return isLaunched;
   }
+
+  String getStorageUploadImageUrl({required String nativeImageName}){
+    int dotIndex = 0;
+    dotIndex = nativeImageName.lastIndexOf('.');
+    String finalImageUrl = nativeImageName.substring(dotIndex);
+    int currentTime = DateTime.now().millisecondsSinceEpoch;
+    return '$currentTime$finalImageUrl';
+  }
+
 }

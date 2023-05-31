@@ -109,6 +109,15 @@ class FirebaseNodes {
   //endregion
 }
 
+class FirebaseStorageFoldersNames{
+
+  static const String productFolder = 'products';
+
+  static const String brandFolder = 'brands';
+
+  static const String clubFolder = 'clubs';
+}
+
 //Shared Preference Keys
 class SharePreferenceKeys {
   static const String appThemeMode = "themeMode";
