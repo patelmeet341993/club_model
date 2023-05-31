@@ -77,4 +77,29 @@ class FireBaseStorageController {
 
   //endregion
 
+  // region BrandOperations
+
+  Future<String?> uploadBrandImagesToFireBaseStorage({
+    required Uint8List data,
+    required String brandId,
+    required String fileName,
+  }) async {
+    String? imageUrl;
+    try {
+      imageUrl = await uploadFilesToFireBaseStorage(
+          data: data,
+          id: brandId,
+          fileName: fileName,
+          storageFolderName: FirebaseStorageFoldersNames.brandFolder
+      );
+      return imageUrl;
+    } catch (e, s) {
+      MyPrint.printOnConsole("Error in Firebase Storage Controller in Upload File Method $e");
+      MyPrint.printOnConsole(s);
+      return imageUrl;
+    }
+  }
+
+  //endregion
+
 }
