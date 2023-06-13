@@ -10,6 +10,8 @@ class ClubModel {
   String thumbnailImageUrl = "";
   String mobileNumber = "";
   String address = "";
+  String userId = "";
+  String password = "";
   bool adminEnabled = false;
   bool clubEnabled = false;
   List<String> images = <String>[];
@@ -23,6 +25,8 @@ class ClubModel {
     this.thumbnailImageUrl = "",
     this.mobileNumber = "",
     this.address = "",
+    this.userId = "",
+    this.password = "",
     this.adminEnabled = false,
     this.clubEnabled = false,
     List<String>? images,
@@ -52,6 +56,9 @@ class ClubModel {
     images = ParsingHelper.parseListMethod<dynamic, String>(map['images']);
     createdTime = ParsingHelper.parseTimestampMethod(map['createdTime']);
     updatedTime = ParsingHelper.parseTimestampMethod(map['updatedTime']);
+    userId = ParsingHelper.parseStringMethod(map["userId"]);
+    password = ParsingHelper.parseStringMethod(map["password"]);
+
 
     location = null;
     Map<String, dynamic> locationMap = ParsingHelper.parseMapMethod<dynamic, dynamic, String, dynamic>(map['location']);
@@ -69,6 +76,8 @@ class ClubModel {
       "address" : address,
       "adminEnabled" : adminEnabled,
       "clubEnabled" : clubEnabled,
+      "userId":userId,
+      "password":password,
       "images" : images,
       "createdTime" : toJson ? createdTime?.toDate().millisecondsSinceEpoch : createdTime,
       "updatedTime" : toJson ? updatedTime?.toDate().millisecondsSinceEpoch : updatedTime,
