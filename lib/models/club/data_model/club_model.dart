@@ -11,6 +11,7 @@ class ClubModel {
   String mobileNumber = "";
   String address = "";
   String userId = "";
+  String adminType = "";
   String password = "";
   bool adminEnabled = false;
   bool clubEnabled = false;
@@ -58,6 +59,7 @@ class ClubModel {
     updatedTime = ParsingHelper.parseTimestampMethod(map['updatedTime']);
     userId = ParsingHelper.parseStringMethod(map["userId"]);
     password = ParsingHelper.parseStringMethod(map["password"]);
+    adminType = ParsingHelper.parseStringMethod(map["adminType"]);
 
 
     location = null;
@@ -74,6 +76,7 @@ class ClubModel {
       "thumbnailImageUrl" : thumbnailImageUrl,
       "mobileNumber" : mobileNumber,
       "address" : address,
+      "adminType" : adminType,
       "adminEnabled" : adminEnabled,
       "clubEnabled" : clubEnabled,
       "userId":userId,
