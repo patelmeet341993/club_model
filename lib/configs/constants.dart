@@ -63,6 +63,7 @@ class FirebaseNodes {
 
   //region Club
   static const String clubsCollection = "clubs";
+  static const String clubsUserCollection = "club Users";
 
   static MyFirestoreCollectionReference get clubsCollectionReference => FirestoreController.collectionReference(
     collectionName: clubsCollection,
@@ -70,6 +71,11 @@ class FirebaseNodes {
 
   static MyFirestoreDocumentReference clubDocumentReference({String? clubId}) => FirestoreController.documentReference(
     collectionName: clubsCollection,
+    documentId: clubId,
+  );
+
+  static MyFirestoreDocumentReference clubUserDocumentReference({String? clubId}) => FirestoreController.documentReference(
+    collectionName: clubsUserCollection,
     documentId: clubId,
   );
   //endregion
