@@ -24,6 +24,7 @@ class ClubUserModel {
     this.mobileNumber = "",
     this.clubId = "",
     this.userId = "",
+    this.adminType = "",
     this.password = "",
     this.adminEnabled = false,
     this.clubEnabled = false,
