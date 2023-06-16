@@ -45,7 +45,7 @@ class ClubUserModel {
     name = ParsingHelper.parseStringMethod(map['name']);
     profileImage = ParsingHelper.parseStringMethod(map['profileImage']);
     mobileNumber = ParsingHelper.parseStringMethod(map['mobileNumber']);
-    clubId = ParsingHelper.parseStringMethod(map['address']);
+    clubId = ParsingHelper.parseStringMethod(map['clubId']);
     adminEnabled = ParsingHelper.parseBoolMethod(map['adminEnabled']);
     clubEnabled = ParsingHelper.parseBoolMethod(map['clubEnabled']);
     createdTime = ParsingHelper.parseTimestampMethod(map['createdTime']);
@@ -64,7 +64,7 @@ class ClubUserModel {
       "name" : name,
       "profileImage" : profileImage,
       "mobileNumber" : mobileNumber,
-      "address" : clubId,
+      "clubId" : clubId,
       "adminType" : adminType,
       "adminEnabled" : adminEnabled,
       "clubEnabled" : clubEnabled,
