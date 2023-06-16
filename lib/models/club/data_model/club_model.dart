@@ -16,6 +16,7 @@ class ClubModel {
   bool adminEnabled = false;
   bool clubEnabled = false;
   List<String> images = <String>[];
+  List<String> clubUserList = <String>[];
   Timestamp? createdTime;
   Timestamp? updatedTime;
   LocationModel? location;
@@ -31,11 +32,13 @@ class ClubModel {
     this.adminEnabled = false,
     this.clubEnabled = false,
     List<String>? images,
+    List<String>? clubUserList,
     this.createdTime,
     this.updatedTime,
     this.location,
   }) {
     this.images = images ?? <String>[];
+    this.clubUserList = clubUserList ?? <String>[];
   }
 
   ClubModel.fromMap(Map<String, dynamic> map) {
@@ -55,6 +58,7 @@ class ClubModel {
     adminEnabled = ParsingHelper.parseBoolMethod(map['adminEnabled']);
     clubEnabled = ParsingHelper.parseBoolMethod(map['clubEnabled']);
     images = ParsingHelper.parseListMethod<dynamic, String>(map['images']);
+    clubUserList = ParsingHelper.parseListMethod<dynamic, String>(map['clubUserList']);
     createdTime = ParsingHelper.parseTimestampMethod(map['createdTime']);
     updatedTime = ParsingHelper.parseTimestampMethod(map['updatedTime']);
     userId = ParsingHelper.parseStringMethod(map["userId"]);
@@ -82,6 +86,7 @@ class ClubModel {
       "userId":userId,
       "password":password,
       "images" : images,
+      "clubUserList" : clubUserList,
       "createdTime" : toJson ? createdTime?.toDate().millisecondsSinceEpoch : createdTime,
       "updatedTime" : toJson ? updatedTime?.toDate().millisecondsSinceEpoch : updatedTime,
       "location" : location?.toMap(toJson: toJson),
