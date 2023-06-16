@@ -68,6 +68,9 @@ class FirebaseNodes {
   static MyFirestoreCollectionReference get clubsCollectionReference => FirestoreController.collectionReference(
     collectionName: clubsCollection,
   );
+  static MyFirestoreCollectionReference get clubUserCollectionReference => FirestoreController.collectionReference(
+    collectionName: clubsUserCollection,
+  );
 
   static MyFirestoreDocumentReference clubDocumentReference({String? clubId}) => FirestoreController.documentReference(
     collectionName: clubsCollection,
