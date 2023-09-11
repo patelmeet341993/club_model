@@ -29,7 +29,12 @@ class AdminRepository{
   }
 
   Future<void> AddBannerRepo(BannerModel bannerModel) async {
-    await FirebaseNodes.adminPropertyDocumentReference.set(bannerModel.toMap());
+    try {
+      await FirebaseNodes.adminPropertyDocumentReference.set(bannerModel.toMap());
+    }catch(e, s) {
+      MyPrint.printOnConsole("Error in AdminRepository().AddBannerRepo():$e");
+      MyPrint.printOnConsole(s);
+    }
   }
 
 
