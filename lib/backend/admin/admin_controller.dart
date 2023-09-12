@@ -10,8 +10,8 @@ class AdminController{
   late AdminProvider _adminProvider;
   late AdminRepository _adminRepository;
 
-  EventController({required AdminProvider? eventProvider, AdminRepository? repository}) {
-    _adminProvider = eventProvider ?? AdminProvider();
+  AdminController({required AdminProvider? adminProvider, AdminRepository? repository}) {
+    _adminProvider = adminProvider ?? AdminProvider();
     _adminRepository = repository ?? AdminRepository();
   }
 
