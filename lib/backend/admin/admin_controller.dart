@@ -4,6 +4,7 @@ import 'package:club_model/backend/admin/admin_provider.dart';
 import 'package:club_model/backend/admin/admin_repository.dart';
 import 'package:club_model/models/common/data_model/banner_model.dart';
 
+import '../../models/common/data_model/property_model.dart';
 import '../../utils/my_print.dart';
 
 class AdminController{
@@ -43,5 +44,15 @@ class AdminController{
     }
   }
 
+  Future<void> getPropertyDataAndSetInProvider() async {
+    try {
+      PropertyModel? propertyModel = await adminRepository.getPropertyModelFromFireStore();
+      adminProvider.propertyModel.set(value: propertyModel);
+    } catch (e) {
+      MyPrint.printOnConsole(
+        "Error in getting PropertyModel in AdminController().getPropertyDataAndSetInProvider():$e",
+      );
+    }
+  }
 
 }
