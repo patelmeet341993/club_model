@@ -1,19 +1,19 @@
 
 
+import 'package:club_model/models/common/data_model/banner_model.dart';
 import 'package:club_model/utils/my_utils.dart';
 import 'package:club_model/utils/parsing_helper.dart';
 
 class PropertyModel {
   String aboutDescription = "", contactNumber = "", whatsApp = "", termsAndConditionsUrl = "", privacyAndPolicyUrl = "";
   bool notificationsEnabled = false, subscriptionDeleteEnabled = false;
-  List<String> bannerImages = [];
-
+  Map<String, BannerModel> banners = {};
 
   PropertyModel({
     this.aboutDescription = "",
     this.contactNumber = "",
     this.whatsApp = "",
-    this.bannerImages = const  [],
+    this.banners = const {},
     this.termsAndConditionsUrl = "",
     this.privacyAndPolicyUrl = "",
     this.notificationsEnabled = false,
@@ -29,7 +29,15 @@ class PropertyModel {
   }
 
   void _initializeFromMap(Map<String, dynamic> map) {
-    bannerImages = ParsingHelper.parseListMethod<dynamic, String>(map['bannerImages']);
+    Map<String, Map<String, dynamic>> bannerMaps = ParsingHelper.parseMapMethod<dynamic, dynamic, String, dynamic>(map['banners']).map((key, value) {
+      return MapEntry(key, ParsingHelper.parseMapMethod<dynamic, dynamic, String, dynamic>(value));
+    });
+    banners.clear();
+    bannerMaps.forEach((String key, Map<String, dynamic> value) {
+      if (value.isNotEmpty) {
+        banners[key] = BannerModel.fromMap(value);
+      }
+    });
     aboutDescription = ParsingHelper.parseStringMethod(map['aboutDescription']);
     contactNumber = ParsingHelper.parseStringMethod(map['contactNumber']);
     whatsApp = ParsingHelper.parseStringMethod(map['whatsApp']);
@@ -41,7 +49,7 @@ class PropertyModel {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      "bannerImages": bannerImages,
+      "banners": banners,
       "aboutDescription": aboutDescription,
       "contactNumber": contactNumber,
       "whatsApp": whatsApp,

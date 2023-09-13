@@ -22,13 +22,25 @@ class AdminController{
   Future<void> addBannerToFirebase({required BannerModel bannerModel}) async {
     try{
       await adminRepository.AddBannerRepo(bannerModel);
-
+      adminProvider.updateBanner(isClear:false,bannerMap: {bannerModel.id:bannerModel});
     }catch(e,s){
       MyPrint.printOnConsole("Error in AdminController().addBannerToFirebase():$e");
       MyPrint.printOnConsole(s);
     }
+  }
 
-
+  Future<void> reorderBannerListToFirebase({required List<BannerModel> bannerList}) async {
+    try{
+      Map<String,BannerModel> bannerMap = {};
+      bannerList.forEach((element) {
+        bannerMap[element.id] = element;
+      });
+      await adminRepository.reorderList(bannerList);
+      adminProvider.updateBanner(isClear:true,bannerMap:bannerMap);
+    }catch(e,s){
+      MyPrint.printOnConsole("Error in AdminController().reorderBannerListToFirebase():$e");
+      MyPrint.printOnConsole(s);
+    }
   }
 
 

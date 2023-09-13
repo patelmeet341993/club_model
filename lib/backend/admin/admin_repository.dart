@@ -30,12 +30,29 @@ class AdminRepository{
 
   Future<void> AddBannerRepo(BannerModel bannerModel) async {
     try {
-      await FirebaseNodes.adminPropertyDocumentReference.set(bannerModel.toMap());
+      await FirebaseNodes.adminPropertyDocumentReference.update({'banner.${bannerModel.id}':bannerModel.toMap()});
     }catch(e, s) {
       MyPrint.printOnConsole("Error in AdminRepository().AddBannerRepo():$e");
       MyPrint.printOnConsole(s);
     }
   }
+
+
+  Future<void> reorderList(List<BannerModel> bannerList) async {
+    try {
+      Map<String,Map<String,dynamic>> bannerMap = {};
+      bannerList.forEach((element) {
+        bannerMap[element.id] = element.toMap();
+      });
+
+      await FirebaseNodes.adminPropertyDocumentReference.update({'banner':bannerMap});
+    }catch(e, s) {
+      MyPrint.printOnConsole("Error in AdminRepository().reorderList():$e");
+      MyPrint.printOnConsole(s);
+    }
+  }
+
+
 
 
 }
