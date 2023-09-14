@@ -13,12 +13,14 @@ class PropertyModel {
     this.aboutDescription = "",
     this.contactNumber = "",
     this.whatsApp = "",
-    this.banners = const {},
+    Map<String, BannerModel>? banners,
     this.termsAndConditionsUrl = "",
     this.privacyAndPolicyUrl = "",
     this.notificationsEnabled = false,
     this.subscriptionDeleteEnabled = false,
-  });
+  }) {
+    this.banners = banners ?? <String, BannerModel>{};
+  }
 
   PropertyModel.fromMap(Map<String, dynamic> map) {
     _initializeFromMap(map);
@@ -47,9 +49,9 @@ class PropertyModel {
     subscriptionDeleteEnabled = ParsingHelper.parseBoolMethod(map['subscriptionDeleteEnabled']);
   }
 
-  Map<String, dynamic> toMap() {
+  Map<String, dynamic> toMap({bool toJson = false}) {
     return <String, dynamic>{
-      "banners": banners,
+      "banners": banners.map((key, value) => MapEntry(key, value.toMap(toJson: toJson))),
       "aboutDescription": aboutDescription,
       "contactNumber": contactNumber,
       "whatsApp": whatsApp,
@@ -62,6 +64,6 @@ class PropertyModel {
 
   @override
   String toString() {
-    return MyUtils.encodeJson(toMap());
+    return MyUtils.encodeJson(toMap(toJson: true));
   }
 }

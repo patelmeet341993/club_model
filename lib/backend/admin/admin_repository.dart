@@ -6,31 +6,33 @@ import '../../configs/constants.dart';
 class AdminRepository{
 
   Future<PropertyModel?> getPropertyModelFromFireStore() async {
+    String tag = MyUtils.getNewId();
+    MyPrint.printOnConsole("AdminRepository().getPropertyModelFromFireStore() called", tag: tag);
 
     PropertyModel? propertyModel;
 
     try {
       MyFirestoreDocumentSnapshot snapshot = await FirebaseNodes.adminPropertyDocumentReference.get();
-      MyPrint.printOnConsole("snapshot exist:${snapshot.exists}");
-      MyPrint.printOnConsole("snapshot data:${snapshot.data()}");
+      MyPrint.printOnConsole("snapshot exist:${snapshot.exists}", tag: tag);
+      MyPrint.printOnConsole("snapshot data:${snapshot.data()}", tag: tag);
 
       if(snapshot.data().checkNotEmpty) {
         propertyModel = PropertyModel.fromMap(snapshot.data()!);
       }
     }
     catch(e, s) {
-      MyPrint.printOnConsole("Error in getting PropertyModel in AdminRepository().getPropertyData():$e");
-      MyPrint.printOnConsole(s);
+      MyPrint.printOnConsole("Error in getting PropertyModel in AdminRepository().getPropertyData():$e", tag: tag);
+      MyPrint.printOnConsole(s, tag: tag);
     }
 
-    MyPrint.printOnConsole("Final propertyModel:$propertyModel");
+    MyPrint.printOnConsole("Final propertyModel:$propertyModel", tag: tag);
 
     return propertyModel;
   }
 
   Future<void> AddBannerRepo(BannerModel bannerModel) async {
     try {
-      await FirebaseNodes.adminPropertyDocumentReference.update({'banner.${bannerModel.id}':bannerModel.toMap()});
+      await FirebaseNodes.adminPropertyDocumentReference.update({'banners.${bannerModel.id}':bannerModel.toMap()});
     }catch(e, s) {
       MyPrint.printOnConsole("Error in AdminRepository().AddBannerRepo():$e");
       MyPrint.printOnConsole(s);
