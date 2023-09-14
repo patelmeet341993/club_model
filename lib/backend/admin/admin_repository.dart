@@ -47,7 +47,7 @@ class AdminRepository{
         bannerMap[element.id] = element.toMap();
       });
 
-      await FirebaseNodes.adminPropertyDocumentReference.update({'banner':bannerMap});
+      await FirebaseNodes.adminPropertyDocumentReference.update({'banners':bannerMap});
     }catch(e, s) {
       MyPrint.printOnConsole("Error in AdminRepository().reorderList():$e");
       MyPrint.printOnConsole(s);
