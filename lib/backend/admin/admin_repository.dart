@@ -39,6 +39,15 @@ class AdminRepository{
     }
   }
 
+  Future<void> deleteBannerRepo(BannerModel bannerModel) async {
+    try {
+      await FirebaseNodes.adminPropertyDocumentReference.update({'banners.${bannerModel.id}':FieldValue.delete()});
+    }catch(e, s) {
+      MyPrint.printOnConsole("Error in AdminRepository().AddBannerRepo():$e");
+      MyPrint.printOnConsole(s);
+    }
+  }
+
 
   Future<void> reorderList(List<BannerModel> bannerList) async {
     try {

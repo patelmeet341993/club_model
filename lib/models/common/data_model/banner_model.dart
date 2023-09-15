@@ -8,6 +8,8 @@ class BannerModel {
   String imageUrl = "";
   String onTapUrl = "";
   int viewNumber = -1;
+  String internalFeatureType = "";
+  String internalScreenName = "";
   bool isInternal = false;
   Timestamp? createdTime;
 
@@ -15,10 +17,11 @@ class BannerModel {
     this.id = "",
     this.imageUrl = "",
     this.onTapUrl = "",
+    this.internalFeatureType = "",
+    this.internalScreenName = "",
     this.viewNumber =-1,
     this.isInternal = false,
     this.createdTime,
-
   });
 
   BannerModel.fromMap(Map<String, dynamic> map) {
@@ -33,6 +36,8 @@ class BannerModel {
     id = ParsingHelper.parseStringMethod(map['id']);
     imageUrl = ParsingHelper.parseStringMethod(map['imageUrl']);
     onTapUrl = ParsingHelper.parseStringMethod(map['onTapUrl']);
+    internalFeatureType = ParsingHelper.parseStringMethod(map['internalFeatureType']);
+    internalFeatureType = ParsingHelper.parseStringMethod(map['internalScreenName']);
     viewNumber = ParsingHelper.parseIntMethod(map['viewNumber']);
     isInternal = ParsingHelper.parseBoolMethod(map['isInternal']);
     createdTime = ParsingHelper.parseTimestampMethod(map['createdTime']);
@@ -43,6 +48,8 @@ class BannerModel {
       "id" : id,
       "imageUrl" : imageUrl,
       "onTapUrl" : onTapUrl,
+      "internalFeatureType" : internalFeatureType,
+      "internalScreenName" : internalScreenName,
       "viewNumber" : viewNumber,
       "isInternal" : isInternal,
       "createdTime" : toJson ? createdTime?.toDate().millisecondsSinceEpoch : createdTime,
