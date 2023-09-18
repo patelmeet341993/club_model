@@ -20,7 +20,7 @@ class AdminProvider extends CommonProvider{
       model?.banners.clear();
     }
     model?.banners.addAll(bannerMap);
-    propertyModel.set(value: model,isNotify: false);
+    propertyModel.set(value: model,isNotify: true);
   }
 
 
