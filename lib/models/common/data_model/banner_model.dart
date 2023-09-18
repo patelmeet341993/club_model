@@ -37,7 +37,7 @@ class BannerModel {
     imageUrl = ParsingHelper.parseStringMethod(map['imageUrl']);
     externalUrl = ParsingHelper.parseStringMethod(map['externalUrl']);
     internalFeatureType = ParsingHelper.parseStringMethod(map['internalFeatureType']);
-    internalFeatureType = ParsingHelper.parseStringMethod(map['internalScreenName']);
+    internalScreenName = ParsingHelper.parseStringMethod(map['internalScreenName']);
     viewNumber = ParsingHelper.parseIntMethod(map['viewNumber']);
     isInternal = ParsingHelper.parseBoolMethod(map['isInternal']);
     createdTime = ParsingHelper.parseTimestampMethod(map['createdTime']);
