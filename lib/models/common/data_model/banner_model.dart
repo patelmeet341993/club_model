@@ -6,7 +6,7 @@ import '../../../utils/parsing_helper.dart';
 class BannerModel {
   String id = "";
   String imageUrl = "";
-  String onTapUrl = "";
+  String externalUrl = "";
   int viewNumber = -1;
   String internalFeatureType = "";
   String internalScreenName = "";
@@ -16,7 +16,7 @@ class BannerModel {
   BannerModel({
     this.id = "",
     this.imageUrl = "",
-    this.onTapUrl = "",
+    this.externalUrl = "",
     this.internalFeatureType = "",
     this.internalScreenName = "",
     this.viewNumber =-1,
@@ -35,7 +35,7 @@ class BannerModel {
   void initializeFromMap(Map<String, dynamic> map) {
     id = ParsingHelper.parseStringMethod(map['id']);
     imageUrl = ParsingHelper.parseStringMethod(map['imageUrl']);
-    onTapUrl = ParsingHelper.parseStringMethod(map['onTapUrl']);
+    externalUrl = ParsingHelper.parseStringMethod(map['externalUrl']);
     internalFeatureType = ParsingHelper.parseStringMethod(map['internalFeatureType']);
     internalFeatureType = ParsingHelper.parseStringMethod(map['internalScreenName']);
     viewNumber = ParsingHelper.parseIntMethod(map['viewNumber']);
@@ -47,7 +47,7 @@ class BannerModel {
     return <String, dynamic>{
       "id" : id,
       "imageUrl" : imageUrl,
-      "onTapUrl" : onTapUrl,
+      "externalUrl" : externalUrl,
       "internalFeatureType" : internalFeatureType,
       "internalScreenName" : internalScreenName,
       "viewNumber" : viewNumber,
