@@ -31,6 +31,18 @@ class AdminController{
     }
   }
 
+  Future<void> deleteBannerFromFirebase({required BannerModel bannerModel}) async {
+    try{
+      await adminRepository.deleteBannerRepo(bannerModel);
+      adminProvider.updateBanner(isClear:false,bannerMap: {bannerModel.id:bannerModel});
+    }catch(e,s){
+      MyPrint.printOnConsole("Error in AdminController().deleteBannerFromFirebase():$e");
+      MyPrint.printOnConsole(s);
+    }
+  }
+
+
+
   Future<void> reorderBannerListToFirebase({required List<BannerModel> bannerList}) async {
     try{
       Map<String,BannerModel> bannerMap = {};
