@@ -12,6 +12,7 @@ class BannerModel {
   String internalScreenName = "";
   bool isInternal = false;
   Timestamp? createdTime;
+  Timestamp? updatedTime;
 
   BannerModel({
     this.id = "",
@@ -22,6 +23,7 @@ class BannerModel {
     this.viewNumber =-1,
     this.isInternal = false,
     this.createdTime,
+    this.updatedTime
   });
 
   BannerModel.fromMap(Map<String, dynamic> map) {
@@ -41,6 +43,7 @@ class BannerModel {
     viewNumber = ParsingHelper.parseIntMethod(map['viewNumber']);
     isInternal = ParsingHelper.parseBoolMethod(map['isInternal']);
     createdTime = ParsingHelper.parseTimestampMethod(map['createdTime']);
+    updatedTime = ParsingHelper.parseTimestampMethod(map['updatedTime']);
   }
 
   Map<String, dynamic> toMap({bool toJson = false}) {
@@ -53,6 +56,7 @@ class BannerModel {
       "viewNumber" : viewNumber,
       "isInternal" : isInternal,
       "createdTime" : toJson ? createdTime?.toDate().millisecondsSinceEpoch : createdTime,
+      "updatedTime" : toJson ? updatedTime?.toDate().millisecondsSinceEpoch : updatedTime,
     };
   }
 
