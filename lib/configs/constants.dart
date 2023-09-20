@@ -5,6 +5,18 @@ class AppConstants {
 
 }
 
+class BannerRoutingType{
+  static const String offerType = "Offer";
+  static const String newLaunchType = "New Launch";
+  static const String newDiscountType = "New Discounts";
+}
+
+class NotificationType{
+  static const String offerType = "Offer";
+  static const String newLaunchType = "New Launch";
+  static const String newDiscountType = "New Discounts";
+}
+
 class FirestoreExceptionCodes {
   static const String notFound = "not-found";
 }
