@@ -9,12 +9,25 @@ class BannerRoutingType{
   static const String offerType = "Offer";
   static const String newLaunchType = "New Launch";
   static const String newDiscountType = "New Discounts";
+
+  static List<String> get values => [
+    offerType,
+    newLaunchType,
+    newDiscountType
+  ];
+
 }
 
 class NotificationType{
   static const String offerType = "Offer";
   static const String newLaunchType = "New Launch";
   static const String newDiscountType = "New Discounts";
+
+  static List<String> get values => [
+    offerType,
+    newLaunchType,
+    newDiscountType
+  ];
 }
 
 class FirestoreExceptionCodes {
