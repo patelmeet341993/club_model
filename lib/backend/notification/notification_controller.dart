@@ -12,7 +12,7 @@ class NotificationController{
     _notificationProvider = notificationProvider ?? NotificationProvider();
   }
 
-  Future<void> createNotification(NotificationModel notificationModel, {required String userId}) async {
+  Future<void> createNotification(NotificationModel notificationModel) async {
     try {
       bool isSuccess = await FirebaseNodes.notificationDocumentReference(notificationId: notificationModel.id).set(notificationModel.toMap()).then((value) {
         return true;
