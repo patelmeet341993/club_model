@@ -2,7 +2,8 @@ import '../backend/common/firestore_controller.dart';
 import 'typedefs.dart';
 
 class AppConstants {
-
+  static const int notificationDocumentLimitForPagination = 15; //25 //5
+  static const int notificationRefreshIndexForPagination = 5;
 }
 
 class BannerRoutingType{
