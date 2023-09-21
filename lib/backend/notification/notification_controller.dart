@@ -12,6 +12,25 @@ class NotificationController{
     _notificationProvider = notificationProvider ?? NotificationProvider();
   }
 
+  Future<void> createNotification(NotificationModel notificationModel, {required String userId}) async {
+    try {
+      bool isSuccess = await FirebaseNodes.notificationDocumentReference(notificationId: notificationModel.id).set(notificationModel.toMap()).then((value) {
+        return true;
+      }).catchError((onError) {
+        MyPrint.printOnConsole("Firebase set error in the create notification");
+        return false;
+      });
+
+      if (isSuccess) {
+        _notificationProvider.addNotificationInList(notificationModel);
+      }
+
+    } catch (e, s) {
+      MyPrint.printOnConsole("Error in TransactionController.createNotification $e");
+      MyPrint.printOnConsole(s);
+    }
+  }
+
   Future<void> getNotificationListFromFirebase({bool isRefresh = true, bool isNotify = true}) async {
     try {
 

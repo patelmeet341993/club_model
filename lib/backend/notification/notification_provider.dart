@@ -40,6 +40,13 @@ class NotificationProvider extends CommonProvider{
     }
   }
 
+  void addNotificationInList(NotificationModel value,{bool isNotify = true}) {
+    notificationList.setList(list: [value]);
+    if(isNotify) {
+      notifyListeners();
+    }
+  }
+
 
 
 
