@@ -33,9 +33,12 @@ class NotificationProvider extends CommonProvider{
   late CommonProviderPrimitiveParameter<bool> hasMoreNotifications;
   late CommonProviderPrimitiveParameter<bool> notificationLoading;
 
-
-
-
+  void addAllNotificationList(List<NotificationModel> value,{bool isNotify = true}) {
+    notificationList.setList(list: value);
+    if(isNotify) {
+      notifyListeners();
+    }
+  }
 
 
 

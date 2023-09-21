@@ -87,6 +87,19 @@ class FirebaseNodes {
   );
   //endregion
 
+   // region Notifications
+  static const String notificationCollection = "notifications";
+
+  static MyFirestoreCollectionReference get notificationCollectionReference => FirestoreController.collectionReference(
+    collectionName: notificationCollection,
+  );
+
+  static MyFirestoreDocumentReference notificationDocumentReference({String? notificationId}) => FirestoreController.documentReference(
+    collectionName: notificationCollection,
+    documentId: notificationId,
+  );
+  //endregion
+
   //region Club
   static const String clubsCollection = "clubs";
   static const String clubsUserCollection = "club Users";
