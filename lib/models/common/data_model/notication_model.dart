@@ -3,7 +3,7 @@ import '../../../utils/my_utils.dart';
 import '../../../utils/parsing_helper.dart';
 
 class NotificationModel {
-  String id = "", title = "", description = "", notificationType = "",sendingTargetGroup = "";
+  String id = "", title = "", description = "", notificationType = "",sendingTargetGroup = "",imageUrl = "";
   bool isOpened = false;
   Timestamp? createdTime;
 
@@ -11,6 +11,7 @@ class NotificationModel {
     this.id = "",
     this.title = "",
     this.description = "",
+    this.imageUrl = "",
     this.notificationType = "",
     this.sendingTargetGroup = "",
     this.isOpened = false,
@@ -29,6 +30,7 @@ class NotificationModel {
     id = ParsingHelper.parseStringMethod(map['id']);
     title = ParsingHelper.parseStringMethod(map['title']);
     description = ParsingHelper.parseStringMethod(map['description']);
+    imageUrl = ParsingHelper.parseStringMethod(map['imageUrl']);
     notificationType = ParsingHelper.parseStringMethod(map['notificationType']);
     sendingTargetGroup = ParsingHelper.parseStringMethod(map['sendingTargetGroup']);
     isOpened = ParsingHelper.parseBoolMethod(map['isOpened']);
@@ -41,6 +43,7 @@ class NotificationModel {
       "title" : title,
       "sendingTargetGroup" : sendingTargetGroup,
       "notificationType" : notificationType,
+      "imageUrl" : imageUrl,
       "description" : description,
       "isOpened" : isOpened,
       "createdTime" : toJson ? createdTime?.toDate().millisecondsSinceEpoch : createdTime,
