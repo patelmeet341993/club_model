@@ -1,32 +1,23 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
-
 import '../../../utils/my_utils.dart';
 import '../../../utils/parsing_helper.dart';
 
-class UserModel {
+class BrandModel {
   String id = "";
   String name = "";
-  String imageUrl = "";
-  String mobileNumber = "";
-  int age = 0;
-  bool adminEnabled = true;
-  Timestamp? dateOfBirth;
+  String thumbnailImageUrl = "";
   Timestamp? createdTime;
   Timestamp? updatedTime;
 
-  UserModel({
+  BrandModel({
     this.id = "",
     this.name = "",
-    this.imageUrl = "",
-    this.mobileNumber = "",
-    this.age = 0,
-    this.adminEnabled = true,
-    this.dateOfBirth,
+    this.thumbnailImageUrl = "",
     this.createdTime,
     this.updatedTime,
   });
 
-  UserModel.fromMap(Map<String, dynamic> map) {
+  BrandModel.fromMap(Map<String, dynamic> map) {
     initializeFromMap(map);
   }
 
@@ -37,11 +28,7 @@ class UserModel {
   void initializeFromMap(Map<String, dynamic> map) {
     id = ParsingHelper.parseStringMethod(map['id']);
     name = ParsingHelper.parseStringMethod(map['name']);
-    imageUrl = ParsingHelper.parseStringMethod(map['imageUrl']);
-    mobileNumber = ParsingHelper.parseStringMethod(map['mobileNumber']);
-    age = ParsingHelper.parseIntMethod(map['age']);
-    adminEnabled = ParsingHelper.parseBoolMethod(map['adminEnabled']);
-    dateOfBirth = ParsingHelper.parseTimestampMethod(map['dateOfBirth']);
+    thumbnailImageUrl = ParsingHelper.parseStringMethod(map['thumbnailImageUrl']);
     createdTime = ParsingHelper.parseTimestampMethod(map['createdTime']);
     updatedTime = ParsingHelper.parseTimestampMethod(map['updatedTime']);
   }
@@ -50,11 +37,7 @@ class UserModel {
     return <String, dynamic>{
       "id" : id,
       "name" : name,
-      "imageUrl" : imageUrl,
-      "mobileNumber" : mobileNumber,
-      "age" : age,
-      "adminEnabled" : adminEnabled,
-      "dateOfBirth" : toJson ? dateOfBirth?.toDate().millisecondsSinceEpoch : dateOfBirth,
+      "thumbnailImageUrl" : thumbnailImageUrl,
       "createdTime" : toJson ? createdTime?.toDate().millisecondsSinceEpoch : createdTime,
       "updatedTime" : toJson ? updatedTime?.toDate().millisecondsSinceEpoch : updatedTime,
     };

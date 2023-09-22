@@ -25,6 +25,8 @@ class CommonProviderListParameter<T> {
 
   final List<T> _list = <T>[];
 
+  int get length => _list.length;
+
   List<T> getList({bool isNewInstance = true, }) {
     if(isNewInstance) {
       return _list.map((e) {
@@ -64,6 +66,8 @@ class CommonProviderMapParameter<K, V> {
 
   final Map<K, V> _map = <K, V>{};
 
+  int get length => _map.length;
+
   Map<K, V> getMap({bool isNewInstance = true, }) {
     if(isNewInstance) {
       return _map.map((K key, V value) {
@@ -76,15 +80,24 @@ class CommonProviderMapParameter<K, V> {
           return mapEntry;
         }
       });
-    }
-    else {
+    } else {
       return _map;
     }
   }
 
   void setMap({required Map<K, V> map, bool isClear = true, bool isNotify = true}) {
-    if(isClear) _map.clear();
+    if (isClear) _map.clear();
     _map.addAll(map);
+    _notify(isNotify: isNotify);
+  }
+
+  void clearKey({required String key, bool isNotify = true}) {
+    _map.remove(key);
+    _notify(isNotify: isNotify);
+  }
+
+  void clearKeys({required List<String> keys, bool isNotify = true}) {
+    _map.removeWhere((key, value) => keys.contains(key));
     _notify(isNotify: isNotify);
   }
 }

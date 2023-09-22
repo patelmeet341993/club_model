@@ -3,30 +3,30 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 import '../../../utils/my_utils.dart';
 import '../../../utils/parsing_helper.dart';
 
-class UserModel {
+class BannerModel {
   String id = "";
-  String name = "";
   String imageUrl = "";
-  String mobileNumber = "";
-  int age = 0;
-  bool adminEnabled = true;
-  Timestamp? dateOfBirth;
+  String externalUrl = "";
+  int viewNumber = -1;
+  String internalFeatureType = "";
+  String internalScreenName = "";
+  bool isInternal = false;
   Timestamp? createdTime;
   Timestamp? updatedTime;
 
-  UserModel({
+  BannerModel({
     this.id = "",
-    this.name = "",
     this.imageUrl = "",
-    this.mobileNumber = "",
-    this.age = 0,
-    this.adminEnabled = true,
-    this.dateOfBirth,
+    this.externalUrl = "",
+    this.internalFeatureType = "",
+    this.internalScreenName = "",
+    this.viewNumber =-1,
+    this.isInternal = false,
     this.createdTime,
-    this.updatedTime,
+    this.updatedTime
   });
 
-  UserModel.fromMap(Map<String, dynamic> map) {
+  BannerModel.fromMap(Map<String, dynamic> map) {
     initializeFromMap(map);
   }
 
@@ -36,12 +36,12 @@ class UserModel {
 
   void initializeFromMap(Map<String, dynamic> map) {
     id = ParsingHelper.parseStringMethod(map['id']);
-    name = ParsingHelper.parseStringMethod(map['name']);
     imageUrl = ParsingHelper.parseStringMethod(map['imageUrl']);
-    mobileNumber = ParsingHelper.parseStringMethod(map['mobileNumber']);
-    age = ParsingHelper.parseIntMethod(map['age']);
-    adminEnabled = ParsingHelper.parseBoolMethod(map['adminEnabled']);
-    dateOfBirth = ParsingHelper.parseTimestampMethod(map['dateOfBirth']);
+    externalUrl = ParsingHelper.parseStringMethod(map['externalUrl']);
+    internalFeatureType = ParsingHelper.parseStringMethod(map['internalFeatureType']);
+    internalScreenName = ParsingHelper.parseStringMethod(map['internalScreenName']);
+    viewNumber = ParsingHelper.parseIntMethod(map['viewNumber']);
+    isInternal = ParsingHelper.parseBoolMethod(map['isInternal']);
     createdTime = ParsingHelper.parseTimestampMethod(map['createdTime']);
     updatedTime = ParsingHelper.parseTimestampMethod(map['updatedTime']);
   }
@@ -49,12 +49,12 @@ class UserModel {
   Map<String, dynamic> toMap({bool toJson = false}) {
     return <String, dynamic>{
       "id" : id,
-      "name" : name,
       "imageUrl" : imageUrl,
-      "mobileNumber" : mobileNumber,
-      "age" : age,
-      "adminEnabled" : adminEnabled,
-      "dateOfBirth" : toJson ? dateOfBirth?.toDate().millisecondsSinceEpoch : dateOfBirth,
+      "externalUrl" : externalUrl,
+      "internalFeatureType" : internalFeatureType,
+      "internalScreenName" : internalScreenName,
+      "viewNumber" : viewNumber,
+      "isInternal" : isInternal,
       "createdTime" : toJson ? createdTime?.toDate().millisecondsSinceEpoch : createdTime,
       "updatedTime" : toJson ? updatedTime?.toDate().millisecondsSinceEpoch : updatedTime,
     };

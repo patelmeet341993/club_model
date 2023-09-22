@@ -8,6 +8,7 @@ export 'package:intl/intl.dart';
 export 'package:shared_preferences/shared_preferences.dart';
 export 'package:url_launcher/url_launcher.dart';
 export 'package:uuid/uuid.dart';
+export 'package:mime/mime.dart';
 //endregion
 
 // region State Management
@@ -67,6 +68,7 @@ export 'backend/common/app_controller.dart';
 export 'backend/common/common_provider.dart';
 export 'backend/common/data_controller.dart';
 export 'backend/common/firestore_controller.dart';
+export 'backend/common/firebase_storage_controller.dart';
 //endregion
 
 //region Connection
@@ -118,6 +120,11 @@ export 'models/product/data_model/product_model.dart';
 export 'models/user/data_model/user_model.dart';
 export 'models/user/request_model/profile_update_request_model.dart';
 //endregion
+
+// region Brand
+export 'models/brand/data_model/brand_model.dart';
+//endregion
+
 //endregion
 
 //region Utils
@@ -138,6 +145,7 @@ export 'utils/shared_pref_manager.dart';
 //region Components
 export 'view/common/components/loading_widget.dart';
 export 'view/common/components/modal_progress_hud.dart';
+export 'view/common/components/common_cachednetwork_image.dart';
 //endregion
 //endregion
 //endregion

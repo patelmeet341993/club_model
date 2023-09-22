@@ -2,46 +2,37 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 
 import '../../../utils/my_utils.dart';
 import '../../../utils/parsing_helper.dart';
-import '../../location/data_model/location_model.dart';
 
-class ClubModel {
+class ClubUserModel {
   String id = "";
   String name = "";
-  String thumbnailImageUrl = "";
+  String profileImage = "";
   String mobileNumber = "";
-  String address = "";
+  String clubId = "";
   String userId = "";
   String adminType = "";
   String password = "";
   bool adminEnabled = false;
   bool clubEnabled = false;
-  List<String> images = <String>[];
-  List<String> clubUserList = <String>[];
   Timestamp? createdTime;
   Timestamp? updatedTime;
-  LocationModel? location;
 
-  ClubModel({
+  ClubUserModel({
     this.id = "",
     this.name = "",
-    this.thumbnailImageUrl = "",
+    this.profileImage = "",
     this.mobileNumber = "",
-    this.address = "",
+    this.clubId = "",
     this.userId = "",
+    this.adminType = "",
     this.password = "",
     this.adminEnabled = false,
     this.clubEnabled = false,
-    List<String>? images,
-    List<String>? clubUserList,
     this.createdTime,
     this.updatedTime,
-    this.location,
-  }) {
-    this.images = images ?? <String>[];
-    this.clubUserList = clubUserList ?? <String>[];
-  }
+  });
 
-  ClubModel.fromMap(Map<String, dynamic> map) {
+  ClubUserModel.fromMap(Map<String, dynamic> map) {
     initializeFromMap(map);
   }
 
@@ -52,13 +43,11 @@ class ClubModel {
   void initializeFromMap(Map<String, dynamic> map) {
     id = ParsingHelper.parseStringMethod(map['id']);
     name = ParsingHelper.parseStringMethod(map['name']);
-    thumbnailImageUrl = ParsingHelper.parseStringMethod(map['thumbnailImageUrl']);
+    profileImage = ParsingHelper.parseStringMethod(map['profileImage']);
     mobileNumber = ParsingHelper.parseStringMethod(map['mobileNumber']);
-    address = ParsingHelper.parseStringMethod(map['address']);
+    clubId = ParsingHelper.parseStringMethod(map['clubId']);
     adminEnabled = ParsingHelper.parseBoolMethod(map['adminEnabled']);
     clubEnabled = ParsingHelper.parseBoolMethod(map['clubEnabled']);
-    images = ParsingHelper.parseListMethod<dynamic, String>(map['images']);
-    clubUserList = ParsingHelper.parseListMethod<dynamic, String>(map['clubUserList']);
     createdTime = ParsingHelper.parseTimestampMethod(map['createdTime']);
     updatedTime = ParsingHelper.parseTimestampMethod(map['updatedTime']);
     userId = ParsingHelper.parseStringMethod(map["userId"]);
@@ -66,30 +55,23 @@ class ClubModel {
     adminType = ParsingHelper.parseStringMethod(map["adminType"]);
 
 
-    location = null;
-    Map<String, dynamic> locationMap = ParsingHelper.parseMapMethod<dynamic, dynamic, String, dynamic>(map['location']);
-    if(locationMap.isNotEmpty) {
-      location = LocationModel.fromMap(locationMap);
-    }
+
   }
 
   Map<String, dynamic> toMap({bool toJson = false}) {
     return <String, dynamic>{
       "id" : id,
       "name" : name,
-      "thumbnailImageUrl" : thumbnailImageUrl,
+      "profileImage" : profileImage,
       "mobileNumber" : mobileNumber,
-      "address" : address,
+      "clubId" : clubId,
       "adminType" : adminType,
       "adminEnabled" : adminEnabled,
       "clubEnabled" : clubEnabled,
       "userId":userId,
       "password":password,
-      "images" : images,
-      "clubUserList" : clubUserList,
       "createdTime" : toJson ? createdTime?.toDate().millisecondsSinceEpoch : createdTime,
       "updatedTime" : toJson ? updatedTime?.toDate().millisecondsSinceEpoch : updatedTime,
-      "location" : location?.toMap(toJson: toJson),
     };
   }
 
