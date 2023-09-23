@@ -99,11 +99,23 @@ extension ContextExtension on BuildContext {
   Size get sizeData => MediaQuery.of(this).size;
 }
 
-extension MyGeoPoint on GeoPoint {
-  Map<String, dynamic> getGeoPointJson() {
+extension MyGeoPointExtension on GeoPoint? {
+  dynamic toMap({bool toJson = false}) {
+    if (toJson) {
+      return getGeoPointJson();
+    } else {
+      return this;
+    }
+  }
+
+  Map<String, dynamic>? getGeoPointJson() {
+    GeoPoint? geoPoint = this;
+
+    if (geoPoint == null) return null;
+
     return {
-      "lat" : latitude,
-      "lon" : longitude,
+      "lat": geoPoint.latitude,
+      "lon": geoPoint.longitude,
     };
   }
 }

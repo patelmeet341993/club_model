@@ -181,3 +181,27 @@ String getSecureUrl(String url) {
   }
   return url;
 }
+
+class CommentTypes {
+  static const String text = "Text";
+  static const String gif = "Gif";
+}
+
+class FeedType {
+  static const String image = "IMAGE";
+  static const String video = "VIDEO";
+  static const String poll = "POLL";
+  static const String none = "NONE";
+}
+
+class FeedLikeType {
+ static const String heart = "HEART";
+ static const String fire = "FIRE";
+ static const String like = "LIKE";
+ static const String thumbsUp = "THUMBSUP";
+ static const String clap = "CLAP";
+ static const String cry = "CRY";
+ static const String angry = "ANGRY";
+ static const String laughing = "LAUGHING";
+ static const String none = "NONE";
+}
