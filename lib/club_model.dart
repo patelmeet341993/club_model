@@ -111,6 +111,12 @@ export 'models/club/data_model/club_model.dart';
 //region Common
 export 'models/common/data_model/new_document_data_model.dart';
 export 'models/common/data_model/property_model.dart';
+//endregion
+
+// region Feed
+export 'models/feed/data_model/poll/poll_answer_model.dart';
+export 'models/feed/data_model/poll/poll_model.dart';
+export 'models/feed/data_model/video_feed_data_model.dart';
 export 'models/feed/data_model/community_model.dart';
 export 'models/feed/data_model/feed_club_meta_model.dart';
 export 'models/feed/data_model/feed_comment_model.dart';
@@ -121,12 +127,6 @@ export 'models/feed/data_model/feed_model.dart';
 export 'models/feed/data_model/feed_user_like_model.dart';
 export 'models/feed/data_model/image_feed_data_model.dart';
 export 'models/feed/data_model/media_meta_model.dart';
-//endregion
-
-// region Feed
-export 'models/feed/data_model/poll/poll_answer_model.dart';
-export 'models/feed/data_model/poll/poll_model.dart';
-export 'models/feed/data_model/video_feed_data_model.dart';
 //endregion
 
 //region Location
