@@ -10,13 +10,10 @@ class ClubModel {
   String thumbnailImageUrl = "";
   String mobileNumber = "";
   String address = "";
-  String userId = "";
-  String adminType = "";
-  String password = "";
   bool adminEnabled = false;
-  bool clubEnabled = false;
   List<String> images = <String>[];
   List<String> clubUserList = <String>[];
+  List<Map<String,String>> clubOwners = <Map<String,String>>[];
   Timestamp? createdTime;
   Timestamp? updatedTime;
   LocationModel? location;
@@ -27,18 +24,17 @@ class ClubModel {
     this.thumbnailImageUrl = "",
     this.mobileNumber = "",
     this.address = "",
-    this.userId = "",
-    this.password = "",
     this.adminEnabled = false,
-    this.clubEnabled = false,
     List<String>? images,
     List<String>? clubUserList,
+    List<Map<String,String>>? clubOwners,
     this.createdTime,
     this.updatedTime,
     this.location,
   }) {
     this.images = images ?? <String>[];
     this.clubUserList = clubUserList ?? <String>[];
+    this.clubOwners = clubOwners ?? <Map<String,String>>[];
   }
 
   ClubModel.fromMap(Map<String, dynamic> map) {
@@ -56,14 +52,11 @@ class ClubModel {
     mobileNumber = ParsingHelper.parseStringMethod(map['mobileNumber']);
     address = ParsingHelper.parseStringMethod(map['address']);
     adminEnabled = ParsingHelper.parseBoolMethod(map['adminEnabled']);
-    clubEnabled = ParsingHelper.parseBoolMethod(map['clubEnabled']);
     images = ParsingHelper.parseListMethod<dynamic, String>(map['images']);
     clubUserList = ParsingHelper.parseListMethod<dynamic, String>(map['clubUserList']);
+    clubOwners = ParsingHelper.parseListMethod<dynamic, Map<String,String>>(map['clubOwners']);
     createdTime = ParsingHelper.parseTimestampMethod(map['createdTime']);
     updatedTime = ParsingHelper.parseTimestampMethod(map['updatedTime']);
-    userId = ParsingHelper.parseStringMethod(map["userId"]);
-    password = ParsingHelper.parseStringMethod(map["password"]);
-    adminType = ParsingHelper.parseStringMethod(map["adminType"]);
 
 
     location = null;
@@ -80,13 +73,10 @@ class ClubModel {
       "thumbnailImageUrl" : thumbnailImageUrl,
       "mobileNumber" : mobileNumber,
       "address" : address,
-      "adminType" : adminType,
       "adminEnabled" : adminEnabled,
-      "clubEnabled" : clubEnabled,
-      "userId":userId,
-      "password":password,
       "images" : images,
       "clubUserList" : clubUserList,
+      "clubOwners" : clubOwners,
       "createdTime" : toJson ? createdTime?.toDate().millisecondsSinceEpoch : createdTime,
       "updatedTime" : toJson ? updatedTime?.toDate().millisecondsSinceEpoch : updatedTime,
       "location" : location?.toMap(toJson: toJson),
