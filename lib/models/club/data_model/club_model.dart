@@ -54,13 +54,18 @@ class ClubModel {
     address = ParsingHelper.parseStringMethod(map['address']);
     adminEnabled = ParsingHelper.parseBoolMethod(map['adminEnabled']);
     coverImages = ParsingHelper.parseListMethod<dynamic, String>(map['coverImages']);
-    clubOwners = ParsingHelper.parseListMethod<dynamic, Map<String,String>>(map['clubOwners']);
+    // clubOwners = ParsingHelper.parseListMethod<dynamic, Map<String,String>>(map['clubOwners']);
     createdTime = ParsingHelper.parseTimestampMethod(map['createdTime']);
     updatedTime = ParsingHelper.parseTimestampMethod(map['updatedTime']);
 
     List<Map<String,dynamic >> galleryImagesList = ParsingHelper.parseMapsListMethod(map['galleryImages']);
     galleryImages = galleryImagesList.map((e){
       return GallerySection.fromMap(e);
+    }).toList();
+
+    List<Map<String,String>> clubOwnersList = ParsingHelper.parseMapsListMethod(map['clubOwners']);
+    clubOwners = clubOwnersList.map((e){
+      return e;
     }).toList();
 
     location = null;
@@ -79,7 +84,7 @@ class ClubModel {
       "address" : address,
       "adminEnabled" : adminEnabled,
       "coverImages" : coverImages,
-      "galleryImages" : galleryImages.map((e) => e.toMap()).toList(),
+      "galleryImages" : galleryImages.map((e) => e.toMap(toJson: toJson)).toList(),
       "clubOwners" : clubOwners,
       "createdTime" : toJson ? createdTime?.toDate().millisecondsSinceEpoch : createdTime,
       "updatedTime" : toJson ? updatedTime?.toDate().millisecondsSinceEpoch : updatedTime,
