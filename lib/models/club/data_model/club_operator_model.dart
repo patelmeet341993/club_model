@@ -3,7 +3,7 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 import '../../../utils/my_utils.dart';
 import '../../../utils/parsing_helper.dart';
 
-class ClubUserModel {
+class ClubOperatorModel {
   String id = "";
   String name = "";
   String profileImageUrl = "";
@@ -16,7 +16,7 @@ class ClubUserModel {
   Timestamp? createdTime;
   Timestamp? updatedTime;
 
-  ClubUserModel({
+  ClubOperatorModel({
     this.id = "",
     this.name = "",
     this.profileImageUrl = "",
@@ -33,7 +33,7 @@ class ClubUserModel {
     this.clubRoles = clubRoles ?? <String,String>{};
   }
 
-  ClubUserModel.fromMap(Map<String, dynamic> map) {
+  ClubOperatorModel.fromMap(Map<String, dynamic> map) {
     initializeFromMap(map);
   }
 
