@@ -10,11 +10,11 @@ class ClubModel {
   String thumbnailImageUrl = "";
   String mobileNumber = "";
   String address = "";
-  bool adminEnabled = false;
+  bool adminEnabled = true;
   List<String> coverImages = <String>[];
   List<GallerySection> galleryImages = <GallerySection>[];
-  List<String> clubUserList = <String>[];
-  List<Map<String,String>> clubOwners = <Map<String,String>>[];
+  List<String> clubUsersList = <String>[];
+  Map<String,String> userRoles = <String,String>{};
   Timestamp? createdTime;
   Timestamp? updatedTime;
   LocationModel? location;
@@ -25,17 +25,19 @@ class ClubModel {
     this.thumbnailImageUrl = "",
     this.mobileNumber = "",
     this.address = "",
-    this.adminEnabled = false,
+    this.adminEnabled = true,
     List<String>? coverImages,
+    List<String>? clubUsersList,
     List<GallerySection>? galleryImages,
-    List<Map<String,String>>? clubOwners,
+    Map<String,String>? userRoles,
     this.createdTime,
     this.updatedTime,
     this.location,
   }) {
     this.coverImages = coverImages ?? <String>[];
-    this.clubOwners = clubOwners ?? <Map<String,String>>[];
+    this.clubUsersList = clubUsersList ?? <String>[];
     this.galleryImages = galleryImages ?? <GallerySection>[];
+    this.userRoles = userRoles ?? <String,String>{};
   }
 
   ClubModel.fromMap(Map<String, dynamic> map) {
@@ -54,7 +56,8 @@ class ClubModel {
     address = ParsingHelper.parseStringMethod(map['address']);
     adminEnabled = ParsingHelper.parseBoolMethod(map['adminEnabled']);
     coverImages = ParsingHelper.parseListMethod<dynamic, String>(map['coverImages']);
-    // clubOwners = ParsingHelper.parseListMethod<dynamic, Map<String,String>>(map['clubOwners']);
+    clubUsersList = ParsingHelper.parseListMethod<dynamic, String>(map['clubUsersList']);
+    userRoles = ParsingHelper.parseMapMethod<dynamic,dynamic,String,String>(map['userRoles']);
     createdTime = ParsingHelper.parseTimestampMethod(map['createdTime']);
     updatedTime = ParsingHelper.parseTimestampMethod(map['updatedTime']);
 
@@ -63,10 +66,6 @@ class ClubModel {
       return GallerySection.fromMap(e);
     }).toList();
 
-    List<Map<String,String>> clubOwnersList = ParsingHelper.parseMapsListMethod(map['clubOwners']);
-    clubOwners = clubOwnersList.map((e){
-      return e;
-    }).toList();
 
     location = null;
     Map<String, dynamic> locationMap = ParsingHelper.parseMapMethod<dynamic, dynamic, String, dynamic>(map['location']);
@@ -84,8 +83,9 @@ class ClubModel {
       "address" : address,
       "adminEnabled" : adminEnabled,
       "coverImages" : coverImages,
+      "clubUsersList" : clubUsersList,
       "galleryImages" : galleryImages.map((e) => e.toMap(toJson: toJson)).toList(),
-      "clubOwners" : clubOwners,
+      "userRoles" : userRoles,
       "createdTime" : toJson ? createdTime?.toDate().millisecondsSinceEpoch : createdTime,
       "updatedTime" : toJson ? updatedTime?.toDate().millisecondsSinceEpoch : updatedTime,
       "location" : location?.toMap(toJson: toJson),
