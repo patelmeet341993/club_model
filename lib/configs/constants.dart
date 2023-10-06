@@ -135,6 +135,19 @@ class FirebaseNodes {
   );
   //endregion
 
+  // region Club Operators
+  static const String clubOperatorCollection = "club_operators";
+
+  static MyFirestoreCollectionReference get clubOperatorCollectionReference => FirestoreController.collectionReference(
+    collectionName: clubOperatorCollection,
+  );
+
+  static MyFirestoreDocumentReference clubOperatorDocumentReference({String? clubOperatorId}) => FirestoreController.documentReference(
+    collectionName: clubOperatorCollection,
+    documentId: clubOperatorId,
+  );
+  //endregion
+
   //region User
   static const String usersCollection = "users";
 
