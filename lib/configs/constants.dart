@@ -19,6 +19,19 @@ class BannerRoutingType{
 
 }
 
+class ClubOperatorRoles{
+  static const String clubManager = "Manager";
+  static const String owner = "";
+  static const String waiter = "Waiter";
+
+  static List<String> get values => [
+    clubManager,
+    owner,
+    waiter
+  ];
+
+}
+
 class NotificationType{
   static const String offerType = "Offer";
   static const String newLaunchType = "New Launch";
