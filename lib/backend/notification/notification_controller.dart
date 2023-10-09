@@ -41,9 +41,9 @@ class NotificationController{
 
       if (isRefresh) {
         MyPrint.printOnConsole("Refresh");
-        _notificationProvider.hasMoreNotifications.set(value: true); // flag for more products available or not
-        _notificationProvider.lastDocument.set(value: null); // flag for last document from where next 10 records to be fetched
-        _notificationProvider.notificationLoading.set(value: false, isNotify: isNotify);
+        _notificationProvider.hasMoreNotifications.set(value: true,isNotify: isNotify); // flag for more products available or not
+        _notificationProvider.lastDocument.set(value: null,isNotify: false); // flag for last document from where next 10 records to be fetched
+        _notificationProvider.notificationLoading.set(value: false, isNotify: false);
         _notificationProvider.notificationList.setList(list: [], isNotify: isNotify);
       }
 
