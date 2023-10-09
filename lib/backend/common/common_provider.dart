@@ -28,24 +28,44 @@ class CommonProviderListParameter<T> {
   int get length => _list.length;
 
   List<T> getList({bool isNewInstance = true, }) {
-    if(isNewInstance) {
+    if (isNewInstance) {
       return _list.map((e) {
-        if(_newInstancialization != null) {
+        if (_newInstancialization != null) {
           return _newInstancialization!(e);
-        }
-        else {
+        } else {
           return e;
         }
       }).toList();
-    }
-    else {
+    } else {
       return _list;
     }
   }
 
   void setList({required List<T> list, bool isClear = true, bool isNotify = true}) {
-    if(isClear) _list.clear();
+    if (isClear) _list.clear();
     _list.addAll(list);
+    _notify(isNotify: isNotify);
+  }
+
+  T? elementAtIndex(int index) {
+    if (index >= 0 && index < length) {
+      return _list[index];
+    }
+    return null;
+  }
+
+  void insertAtIndex({required int index, required T model, bool isNotify = true}) {
+    _list.insert(index, model);
+    _notify(isNotify: isNotify);
+  }
+
+  void removeObject({required T model, bool isNotify = true}) {
+    _list.remove(model);
+    _notify(isNotify: isNotify);
+  }
+
+  void insertAll({required int index, required List<T> list, bool isNotify = true}) {
+    _list.insertAll(index, list);
     _notify(isNotify: isNotify);
   }
 }
