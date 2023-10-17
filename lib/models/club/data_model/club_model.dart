@@ -13,8 +13,8 @@ class ClubModel {
   bool adminEnabled = true;
   List<String> coverImages = <String>[];
   List<GallerySection> galleryImages = <GallerySection>[];
-  List<String> clubUsersList = <String>[];
-  Map<String,String> userRoles = <String,String>{};
+  List<String> clubOperatorList = <String>[];
+  Map<String,String> operatorRoles = <String,String>{};
   Timestamp? createdTime;
   Timestamp? updatedTime;
   LocationModel? location;
@@ -27,17 +27,17 @@ class ClubModel {
     this.address = "",
     this.adminEnabled = true,
     List<String>? coverImages,
-    List<String>? clubUsersList,
+    List<String>? clubOperatorList,
     List<GallerySection>? galleryImages,
-    Map<String,String>? userRoles,
+    Map<String,String>? operatorRoles,
     this.createdTime,
     this.updatedTime,
     this.location,
   }) {
     this.coverImages = coverImages ?? <String>[];
-    this.clubUsersList = clubUsersList ?? <String>[];
+    this.clubOperatorList = clubOperatorList ?? <String>[];
     this.galleryImages = galleryImages ?? <GallerySection>[];
-    this.userRoles = userRoles ?? <String,String>{};
+    this.operatorRoles = operatorRoles ?? <String,String>{};
   }
 
   ClubModel.fromMap(Map<String, dynamic> map) {
@@ -56,8 +56,8 @@ class ClubModel {
     address = ParsingHelper.parseStringMethod(map['address']);
     adminEnabled = ParsingHelper.parseBoolMethod(map['adminEnabled']);
     coverImages = ParsingHelper.parseListMethod<dynamic, String>(map['coverImages']);
-    clubUsersList = ParsingHelper.parseListMethod<dynamic, String>(map['clubUsersList']);
-    userRoles = ParsingHelper.parseMapMethod<dynamic,dynamic,String,String>(map['userRoles']);
+    clubOperatorList = ParsingHelper.parseListMethod<dynamic, String>(map['clubOperatorList']);
+    operatorRoles = ParsingHelper.parseMapMethod<dynamic,dynamic,String,String>(map['operatorRoles']);
     createdTime = ParsingHelper.parseTimestampMethod(map['createdTime']);
     updatedTime = ParsingHelper.parseTimestampMethod(map['updatedTime']);
 
@@ -83,9 +83,9 @@ class ClubModel {
       "address" : address,
       "adminEnabled" : adminEnabled,
       "coverImages" : coverImages,
-      "clubUsersList" : clubUsersList,
+      "clubOperatorList" : clubOperatorList,
       "galleryImages" : galleryImages.map((e) => e.toMap(toJson: toJson)).toList(),
-      "userRoles" : userRoles,
+      "operatorRoles" : operatorRoles,
       "createdTime" : toJson ? createdTime?.toDate().millisecondsSinceEpoch : createdTime,
       "updatedTime" : toJson ? updatedTime?.toDate().millisecondsSinceEpoch : updatedTime,
       "location" : location?.toMap(toJson: toJson),
