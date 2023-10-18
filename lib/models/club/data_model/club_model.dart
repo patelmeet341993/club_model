@@ -12,9 +12,9 @@ class ClubModel {
   String address = "";
   bool adminEnabled = true;
   List<String> coverImages = <String>[];
-  List<GallerySection> galleryImages = <GallerySection>[];
+  Map<String, GallerySection> galleryImages = <String, GallerySection>{};
   List<String> clubOperatorList = <String>[];
-  Map<String,String> operatorRoles = <String,String>{};
+  Map<String, String> operatorRoles = <String, String>{};
   Timestamp? createdTime;
   Timestamp? updatedTime;
   LocationModel? location;
@@ -28,16 +28,16 @@ class ClubModel {
     this.adminEnabled = true,
     List<String>? coverImages,
     List<String>? clubOperatorList,
-    List<GallerySection>? galleryImages,
-    Map<String,String>? operatorRoles,
+    Map<String, GallerySection>? galleryImages,
+    Map<String, String>? operatorRoles,
     this.createdTime,
     this.updatedTime,
     this.location,
   }) {
     this.coverImages = coverImages ?? <String>[];
     this.clubOperatorList = clubOperatorList ?? <String>[];
-    this.galleryImages = galleryImages ?? <GallerySection>[];
-    this.operatorRoles = operatorRoles ?? <String,String>{};
+    this.galleryImages = galleryImages ?? <String, GallerySection>{};
+    this.operatorRoles = operatorRoles ?? <String, String>{};
   }
 
   ClubModel.fromMap(Map<String, dynamic> map) {
@@ -57,38 +57,45 @@ class ClubModel {
     adminEnabled = ParsingHelper.parseBoolMethod(map['adminEnabled']);
     coverImages = ParsingHelper.parseListMethod<dynamic, String>(map['coverImages']);
     clubOperatorList = ParsingHelper.parseListMethod<dynamic, String>(map['clubOperatorList']);
-    operatorRoles = ParsingHelper.parseMapMethod<dynamic,dynamic,String,String>(map['operatorRoles']);
+    operatorRoles = ParsingHelper.parseMapMethod<dynamic, dynamic, String, String>(map['operatorRoles']);
     createdTime = ParsingHelper.parseTimestampMethod(map['createdTime']);
     updatedTime = ParsingHelper.parseTimestampMethod(map['updatedTime']);
 
-    List<Map<String,dynamic >> galleryImagesList = ParsingHelper.parseMapsListMethod(map['galleryImages']);
-    galleryImages = galleryImagesList.map((e){
-      return GallerySection.fromMap(e);
-    }).toList();
-
+    galleryImages.clear();
+    Map<String, dynamic> galleryImagesMap1 = ParsingHelper.parseMapMethod<dynamic, dynamic, String, dynamic>(map['galleryImages']);
+    Map<String, GallerySection> galleryImagesMap2 = <String, GallerySection>{};
+    galleryImagesMap1.forEach((String key, dynamic value) {
+      Map<String, dynamic> map = ParsingHelper.parseMapMethod<dynamic, dynamic, String, dynamic>(value);
+      if (map.isNotEmpty) {
+        galleryImagesMap2[key] = GallerySection.fromMap(map);
+      }
+    });
+    galleryImages.addAll(galleryImagesMap2);
 
     location = null;
     Map<String, dynamic> locationMap = ParsingHelper.parseMapMethod<dynamic, dynamic, String, dynamic>(map['location']);
-    if(locationMap.isNotEmpty) {
+    if (locationMap.isNotEmpty) {
       location = LocationModel.fromMap(locationMap);
     }
   }
 
   Map<String, dynamic> toMap({bool toJson = false}) {
     return <String, dynamic>{
-      "id" : id,
-      "name" : name,
-      "thumbnailImageUrl" : thumbnailImageUrl,
-      "mobileNumber" : mobileNumber,
-      "address" : address,
-      "adminEnabled" : adminEnabled,
-      "coverImages" : coverImages,
-      "clubOperatorList" : clubOperatorList,
-      "galleryImages" : galleryImages.map((e) => e.toMap(toJson: toJson)).toList(),
-      "operatorRoles" : operatorRoles,
-      "createdTime" : toJson ? createdTime?.toDate().millisecondsSinceEpoch : createdTime,
-      "updatedTime" : toJson ? updatedTime?.toDate().millisecondsSinceEpoch : updatedTime,
-      "location" : location?.toMap(toJson: toJson),
+      "id": id,
+      "name": name,
+      "thumbnailImageUrl": thumbnailImageUrl,
+      "mobileNumber": mobileNumber,
+      "address": address,
+      "adminEnabled": adminEnabled,
+      "coverImages": coverImages,
+      "clubOperatorList": clubOperatorList,
+      "galleryImages": galleryImages.map((String gallerySectionId, GallerySection gallerySection) {
+        return MapEntry(gallerySectionId, gallerySection.toMap(toJson: toJson));
+      }),
+      "operatorRoles": operatorRoles,
+      "createdTime": toJson ? createdTime?.toDate().millisecondsSinceEpoch : createdTime,
+      "updatedTime": toJson ? updatedTime?.toDate().millisecondsSinceEpoch : updatedTime,
+      "location": location?.toMap(toJson: toJson),
     };
   }
 
@@ -99,15 +106,19 @@ class ClubModel {
 }
 
 class GallerySection {
-  String imageUrl = '';
+  List<String> imageUrls = [];
   String sectionName = '';
+  String id = '';
   Timestamp? createdTime;
 
   GallerySection({
-    this.imageUrl = "",
+    List<String>? imageUrls,
     this.sectionName = "",
+    this.id = "",
     this.createdTime,
-  });
+  }) {
+    this.imageUrls = imageUrls ?? <String>[];
+  }
 
   GallerySection.fromMap(Map<String, dynamic> map) {
     initializeFromMap(map);
@@ -118,16 +129,18 @@ class GallerySection {
   }
 
   void initializeFromMap(Map<String, dynamic> map) {
-    imageUrl = ParsingHelper.parseStringMethod(map['imageUrl']);
+    imageUrls = ParsingHelper.parseListMethod<dynamic, String>(map['imageUrls']);
     sectionName = ParsingHelper.parseStringMethod(map['sectionName']);
+    id = ParsingHelper.parseStringMethod(map['id']);
     createdTime = ParsingHelper.parseTimestampMethod(map['createdTime']);
   }
 
   Map<String, dynamic> toMap({bool toJson = false}) {
     return <String, dynamic>{
-      "imageUrl" : imageUrl,
-      "sectionName" : sectionName,
-      "createdTime" : toJson ? createdTime?.toDate().millisecondsSinceEpoch : createdTime,
+      "imageUrls": imageUrls,
+      "id": id,
+      "sectionName": sectionName,
+      "createdTime": toJson ? createdTime?.toDate().millisecondsSinceEpoch : createdTime,
     };
   }
 
