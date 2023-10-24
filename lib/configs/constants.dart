@@ -32,6 +32,27 @@ class ClubOperatorRoles{
 
 }
 
+class ProductType{
+  static const String rum = "Rum";
+  static const String whiskey = "Whiskey";
+  static const String wine = "Wine";
+
+  static List<String> get values => [
+    rum,
+    whiskey,
+    wine,
+  ];
+
+}
+
+class ProductCreatorType{
+  static const String admin = "Admin";
+
+  static List<String> get values => [
+    admin,
+  ];
+}
+
 class NotificationType{
   static const String offerType = "Offer";
   static const String newLaunchType = "New Launch";

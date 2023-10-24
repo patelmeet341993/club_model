@@ -15,6 +15,8 @@ class ClubModel {
   Map<String, GallerySection> galleryImages = <String, GallerySection>{};
   List<String> clubOperatorList = <String>[];
   Map<String, String> operatorRoles = <String, String>{};
+  List<String> clubProductIdList = <String>[];
+  Map<String, String> clubProducts = <String, String>{};
   Timestamp? createdTime;
   Timestamp? updatedTime;
   LocationModel? location;
@@ -28,16 +30,20 @@ class ClubModel {
     this.adminEnabled = true,
     List<String>? coverImages,
     List<String>? clubOperatorList,
+    List<String>? clubProductIdList,
     Map<String, GallerySection>? galleryImages,
     Map<String, String>? operatorRoles,
+    Map<String, String>? clubProducts,
     this.createdTime,
     this.updatedTime,
     this.location,
   }) {
     this.coverImages = coverImages ?? <String>[];
     this.clubOperatorList = clubOperatorList ?? <String>[];
+    this.clubProductIdList = clubProductIdList ?? <String>[];
     this.galleryImages = galleryImages ?? <String, GallerySection>{};
     this.operatorRoles = operatorRoles ?? <String, String>{};
+    this.clubProducts = clubProducts ?? <String, String>{};
   }
 
   ClubModel.fromMap(Map<String, dynamic> map) {
@@ -57,7 +63,9 @@ class ClubModel {
     adminEnabled = ParsingHelper.parseBoolMethod(map['adminEnabled']);
     coverImages = ParsingHelper.parseListMethod<dynamic, String>(map['coverImages']);
     clubOperatorList = ParsingHelper.parseListMethod<dynamic, String>(map['clubOperatorList']);
+    clubProductIdList = ParsingHelper.parseListMethod<dynamic, String>(map['clubProductIdList']);
     operatorRoles = ParsingHelper.parseMapMethod<dynamic, dynamic, String, String>(map['operatorRoles']);
+    clubProducts = ParsingHelper.parseMapMethod<dynamic, dynamic, String, String>(map['clubProducts']);
     createdTime = ParsingHelper.parseTimestampMethod(map['createdTime']);
     updatedTime = ParsingHelper.parseTimestampMethod(map['updatedTime']);
 
@@ -89,10 +97,12 @@ class ClubModel {
       "adminEnabled": adminEnabled,
       "coverImages": coverImages,
       "clubOperatorList": clubOperatorList,
+      "clubProductIdList": clubProductIdList,
       "galleryImages": galleryImages.map((String gallerySectionId, GallerySection gallerySection) {
         return MapEntry(gallerySectionId, gallerySection.toMap(toJson: toJson));
       }),
       "operatorRoles": operatorRoles,
+      "clubProducts": clubProducts,
       "createdTime": toJson ? createdTime?.toDate().millisecondsSinceEpoch : createdTime,
       "updatedTime": toJson ? updatedTime?.toDate().millisecondsSinceEpoch : updatedTime,
       "location": location?.toMap(toJson: toJson),
