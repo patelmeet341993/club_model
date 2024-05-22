@@ -22,7 +22,8 @@ dependencies:
   url_launcher: ^6.1.10
   uuid: ^3.0.7
   mime: ^1.0.4
-
+  elastic_client: ^0.3.13
+  cloudinary_sdk: ^5.0.0+1
 
   ####################
   # State management #
