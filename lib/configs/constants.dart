@@ -87,19 +87,6 @@ class FirebaseNodes {
   );
   //endregion
 
-   // region Notifications
-  static const String notificationCollection = "notifications";
-
-  static MyFirestoreCollectionReference get notificationCollectionReference => FirestoreController.collectionReference(
-    collectionName: notificationCollection,
-  );
-
-  static MyFirestoreDocumentReference notificationDocumentReference({String? notificationId}) => FirestoreController.documentReference(
-    collectionName: notificationCollection,
-    documentId: notificationId,
-  );
-  //endregion
-
   //region Club
   static const String clubsCollection = "clubs";
   static const String clubsUserCollection = "club Users";
@@ -120,6 +107,34 @@ class FirebaseNodes {
     collectionName: clubsUserCollection,
     documentId: clubId,
   );
+  //endregion
+
+  //region Feed
+  static const String feedsCollection = "feeds";
+
+  static MyFirestoreCollectionReference get feedsCollectionReference => FirestoreController.collectionReference(
+        collectionName: feedsCollection,
+      );
+
+  static MyFirestoreDocumentReference feedDocumentReference({String? feedId}) => FirestoreController.documentReference(
+        collectionName: feedsCollection,
+        documentId: feedId,
+      );
+
+  //endregion
+
+  // region Notifications
+  static const String notificationCollection = "notifications";
+
+  static MyFirestoreCollectionReference get notificationCollectionReference => FirestoreController.collectionReference(
+        collectionName: notificationCollection,
+      );
+
+  static MyFirestoreDocumentReference notificationDocumentReference({String? notificationId}) => FirestoreController.documentReference(
+        collectionName: notificationCollection,
+        documentId: notificationId,
+      );
+
   //endregion
 
   //region Product
@@ -155,6 +170,10 @@ class FirebaseNodes {
     collectionName: timestampCollection,
   );
   //endregion
+}
+
+class ElasticIndexes {
+  static const String clubFeedsIndex = "clubFeeds";
 }
 
 class FirebaseStorageFoldersNames{
@@ -204,4 +223,10 @@ class FeedLikeType {
  static const String angry = "ANGRY";
  static const String laughing = "LAUGHING";
  static const String none = "NONE";
+}
+
+class HiveKeys {
+  static String getKeyForHiddenFeedsForUserId({required String userId}) {
+    return "hide_feed_for_me_$userId";
+  }
 }
