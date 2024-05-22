@@ -5,6 +5,7 @@ library hms_models;
 //region UI
 export 'package:cached_network_image/cached_network_image.dart';
 export 'package:cloud_firestore/cloud_firestore.dart';
+export 'package:cloudinary_sdk/cloudinary_sdk.dart';
 //region Dependencies
 //region Utils
 export 'package:connectivity_plus/connectivity_plus.dart';
@@ -111,12 +112,6 @@ export 'models/club/data_model/club_model.dart';
 //region Common
 export 'models/common/data_model/new_document_data_model.dart';
 export 'models/common/data_model/property_model.dart';
-//endregion
-
-// region Feed
-export 'models/feed/data_model/poll/poll_answer_model.dart';
-export 'models/feed/data_model/poll/poll_model.dart';
-export 'models/feed/data_model/video_feed_data_model.dart';
 export 'models/feed/data_model/community_model.dart';
 export 'models/feed/data_model/feed_club_meta_model.dart';
 export 'models/feed/data_model/feed_comment_model.dart';
@@ -127,6 +122,14 @@ export 'models/feed/data_model/feed_model.dart';
 export 'models/feed/data_model/feed_user_like_model.dart';
 export 'models/feed/data_model/image_feed_data_model.dart';
 export 'models/feed/data_model/media_meta_model.dart';
+//endregion
+
+// region Feed
+export 'models/feed/data_model/poll/poll_answer_model.dart';
+export 'models/feed/data_model/poll/poll_model.dart';
+export 'models/feed/data_model/video_feed_data_model.dart';
+export 'models/feed/request_model/create_feed_request_model.dart';
+export 'models/feed/request_model/delete_feed_request_model.dart';
 //endregion
 
 //region Location
