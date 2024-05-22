@@ -1,3 +1,4 @@
+/*
 import 'dart:convert';
 import 'dart:io';
 import 'dart:isolate';
@@ -53,7 +54,8 @@ class FeedController {
     return isSuccess;
   }
 
-  /*Future<bool> updateFeed(FeedModel feedModel) async {
+  */
+/*Future<bool> updateFeed(FeedModel feedModel) async {
     bool isSuccess = false;
     try {
       Map<String, dynamic> firestoreMap = {
@@ -92,7 +94,8 @@ class FeedController {
     }
 
     return isSuccess;
-  }*/
+  }*/ /*
+
 
   Future<bool> deletePost({required DeleteFeedRequestModel requestModel}) async {
     String tag = MyUtils.getNewId();
@@ -1041,7 +1044,9 @@ class FeedController {
       MyPrint.printOnConsole("First Feed In All Feeds List::${sportifeedProvider.feedsList.isNotEmpty ? sportifeedProvider.feedsList.first.id : ""}");
 
       //To Store In Offline
-      if (isRefresh /*&& sportifeedProvider.feedsList.isNotEmpty*/) {
+      if (isRefresh */
+/*&& sportifeedProvider.feedsList.isNotEmpty*/ /*
+) {
         Map<String, dynamic> offlineFeeds = {};
         int length = (sportifeedProvider.feedsList.length >= sportifeedProvider.offlineFeedsCount ? sportifeedProvider.offlineFeedsCount : sportifeedProvider.feedsList.length);
         for (int i = 0; i < length; i++) {
@@ -1053,11 +1058,13 @@ class FeedController {
         firestore.Timestamp endTime = firestore.Timestamp.now();
         MyPrint.printOnConsole('Offline Feeds Set in ${startTime.toDate().difference(endTime.toDate()).inMilliseconds} Milliseconds');
 
-        /*startTime = firestore.Timestamp.now();
+        */
+/*startTime = firestore.Timestamp.now();
         dynamic value = await HiveManager().get(SEMBAST_FEEDS);
         endTime = firestore.Timestamp.now();
         MyPrint.printOnConsole('Offline Feeds Got in ${startTime.toDate().difference(endTime.toDate()).inMilliseconds} Milliseconds');
-        MyPrint.printOnConsole("Offline Feeds:${value}");*/
+        MyPrint.printOnConsole("Offline Feeds:${value}");*/ /*
+
       }
 
       MyPrint.printOnConsole("hasMorePinnedFeeds:${sportifeedProvider.hasMorePinnedFeeds}");
@@ -2086,7 +2093,8 @@ class FeedController {
       list.last.add(documentSnapshot);
     });
 
-    /*Map<String, Map<String, Map<String, dynamic>>> interestmap = await DataController().getInterests2(NavigationController.mainScreenNavigator.currentContext!);
+    */
+/*Map<String, Map<String, Map<String, dynamic>>> interestmap = await DataController().getInterests2(NavigationController.mainScreenNavigator.currentContext!);
     Map<String, String> interestNameIdMap = {};
     Map<String, InterestModel> interestIdModelMap = {};
     interestmap.forEach((key, value) {
@@ -2095,7 +2103,8 @@ class FeedController {
         interestNameIdMap[interestModel.name] = interestModel.id;
         interestIdModelMap[interestModel.id] = interestModel;
       });
-    });*/
+    });*/ /*
+
 
     for (int i = 0; i < list.length; i++) {
       List<firestore.DocumentSnapshot<Map<String, dynamic>>> docs = list[i];
@@ -2105,7 +2114,8 @@ class FeedController {
         Map<String, dynamic> data = {};
         CommunityModel communityModel = CommunityModel.fromMap(documentSnapshot.data() ?? {});
 
-        /*Map<String, dynamic> interest2Map = {};
+        */
+/*Map<String, dynamic> interest2Map = {};
         communityModel.interests.forEach((String interest) {
           if(interestNameIdMap[interest]?.isNotEmpty ?? false) {
             if(interestIdModelMap[interestNameIdMap[interest]!] != null) {
@@ -2117,7 +2127,8 @@ class FeedController {
             }
           }
         });
-        data['interests2'] = interest2Map;*/
+        data['interests2'] = interest2Map;*/ /*
+
 
         batch.update(FirestoreController().firestore.collection(COMMUNITY_COLLECTION).doc(documentSnapshot.id), data);
       }
@@ -2946,3 +2957,4 @@ void getFeedsFromHashtagIsolateMethod(SendPort mainSendPort) async {
     replyPort.send([]);
   }
 }
+*/
