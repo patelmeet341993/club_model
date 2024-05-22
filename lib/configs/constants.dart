@@ -121,19 +121,6 @@ class FirebaseNodes {
   );
   //endregion
 
-   // region Notifications
-  static const String notificationCollection = "notifications";
-
-  static MyFirestoreCollectionReference get notificationCollectionReference => FirestoreController.collectionReference(
-    collectionName: notificationCollection,
-  );
-
-  static MyFirestoreDocumentReference notificationDocumentReference({String? notificationId}) => FirestoreController.documentReference(
-    collectionName: notificationCollection,
-    documentId: notificationId,
-  );
-  //endregion
-
   //region Club
   static const String clubsCollection = "clubs";
   static const String clubsUserCollection = "club Users";
@@ -154,6 +141,34 @@ class FirebaseNodes {
     collectionName: clubsUserCollection,
     documentId: clubId,
   );
+  //endregion
+
+  //region Feed
+  static const String feedsCollection = "feeds";
+
+  static MyFirestoreCollectionReference get feedsCollectionReference => FirestoreController.collectionReference(
+        collectionName: feedsCollection,
+      );
+
+  static MyFirestoreDocumentReference feedDocumentReference({String? feedId}) => FirestoreController.documentReference(
+        collectionName: feedsCollection,
+        documentId: feedId,
+      );
+
+  //endregion
+
+  // region Notifications
+  static const String notificationCollection = "notifications";
+
+  static MyFirestoreCollectionReference get notificationCollectionReference => FirestoreController.collectionReference(
+        collectionName: notificationCollection,
+      );
+
+  static MyFirestoreDocumentReference notificationDocumentReference({String? notificationId}) => FirestoreController.documentReference(
+        collectionName: notificationCollection,
+        documentId: notificationId,
+      );
+
   //endregion
 
   //region Product
@@ -204,6 +219,10 @@ class FirebaseNodes {
   //endregion
 }
 
+class ElasticIndexes {
+  static const String clubFeedsIndex = "clubFeeds";
+}
+
 class FirebaseStorageFoldersNames{
 
   static const String productFolder = 'products';
@@ -227,4 +246,34 @@ String getSecureUrl(String url) {
     url = url.replaceFirst("http:", "https:");
   }
   return url;
+}
+
+class CommentTypes {
+  static const String text = "Text";
+  static const String gif = "Gif";
+}
+
+class FeedType {
+  static const String image = "IMAGE";
+  static const String video = "VIDEO";
+  static const String poll = "POLL";
+  static const String none = "NONE";
+}
+
+class FeedLikeType {
+ static const String heart = "HEART";
+ static const String fire = "FIRE";
+ static const String like = "LIKE";
+ static const String thumbsUp = "THUMBSUP";
+ static const String clap = "CLAP";
+ static const String cry = "CRY";
+ static const String angry = "ANGRY";
+ static const String laughing = "LAUGHING";
+ static const String none = "NONE";
+}
+
+class HiveKeys {
+  static String getKeyForHiddenFeedsForUserId({required String userId}) {
+    return "hide_feed_for_me_$userId";
+  }
 }
