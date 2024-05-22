@@ -9,7 +9,7 @@ class CommunityModel {
   Timestamp? createdTime, updatedTime, editedTime;
 
   CommunityModel({
-    this.id: "",
+    this.id = "",
     this.cid = "",
     this.name = "",
     this.description = "",
