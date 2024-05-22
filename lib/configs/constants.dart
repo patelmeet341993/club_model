@@ -19,6 +19,40 @@ class BannerRoutingType{
 
 }
 
+class ClubOperatorRoles{
+  static const String clubManager = "Manager";
+  static const String owner = "Owner";
+  static const String waiter = "Waiter";
+
+  static List<String> get values => [
+    clubManager,
+    owner,
+    waiter
+  ];
+
+}
+
+class ProductType{
+  static const String rum = "Rum";
+  static const String whiskey = "Whiskey";
+  static const String wine = "Wine";
+
+  static List<String> get values => [
+    rum,
+    whiskey,
+    wine,
+  ];
+
+}
+
+class ProductCreatorType{
+  static const String admin = "Admin";
+
+  static List<String> get values => [
+    admin,
+  ];
+}
+
 class NotificationType{
   static const String offerType = "Offer";
   static const String newLaunchType = "New Launch";
@@ -132,6 +166,19 @@ class FirebaseNodes {
   static MyFirestoreDocumentReference productDocumentReference({String? productId}) => FirestoreController.documentReference(
     collectionName: productsCollection,
     documentId: productId,
+  );
+  //endregion
+
+  // region Club Operators
+  static const String clubOperatorCollection = "club_operators";
+
+  static MyFirestoreCollectionReference get clubOperatorCollectionReference => FirestoreController.collectionReference(
+    collectionName: clubOperatorCollection,
+  );
+
+  static MyFirestoreDocumentReference clubOperatorDocumentReference({String? clubOperatorId}) => FirestoreController.documentReference(
+    collectionName: clubOperatorCollection,
+    documentId: clubOperatorId,
   );
   //endregion
 

@@ -8,6 +8,8 @@ class ProductModel {
   String id = "";
   String name = "";
   String thumbnailImageUrl = "";
+  String createdBy = "";
+  String productType = "";
   BrandModel? brand;
   double sizeInML = 0;
   double price = 0;
@@ -18,6 +20,8 @@ class ProductModel {
     this.id = "",
     this.name = "",
     this.thumbnailImageUrl = "",
+    this.createdBy = "",
+    this.productType = "",
     this.brand,
     this.sizeInML = 0,
     this.price = 0,
@@ -37,6 +41,8 @@ class ProductModel {
     id = ParsingHelper.parseStringMethod(map['id']);
     name = ParsingHelper.parseStringMethod(map['name']);
     thumbnailImageUrl = ParsingHelper.parseStringMethod(map['thumbnailImageUrl']);
+    createdBy = ParsingHelper.parseStringMethod(map['createdBy']);
+    productType = ParsingHelper.parseStringMethod(map['productType']);
     sizeInML = ParsingHelper.parseDoubleMethod(map['sizeInML']);
     price = ParsingHelper.parseDoubleMethod(map['price']);
     createdTime = ParsingHelper.parseTimestampMethod(map['createdTime']);
@@ -54,6 +60,8 @@ class ProductModel {
       "id" : id,
       "name" : name,
       "thumbnailImageUrl" : thumbnailImageUrl,
+      "createdBy" : createdBy,
+      "productType" : productType,
       "sizeInML" : sizeInML,
       "price" : price,
       "createdTime" : toJson ? createdTime?.toDate().millisecondsSinceEpoch : createdTime,
